@@ -1,0 +1,24 @@
+@use 'colors' as *;
+
+$dark-contrast: 'medium';
+$light-contrast: 'hard';
+
+html.dark {
+  @each $key, $value in map-get($dark-bg, $dark-contrast) {
+      --#{$key}: #{$value};
+  }
+
+  @each $key, $value in $dark-fg {
+      --#{$key}: #{$value};
+  }
+}
+
+html:not(.dark) {
+  @each $key, $value in map-get($light-bg, $light-contrast) {
+      --#{$key}: #{$value};
+  }
+
+  @each $key, $value in $light-fg {
+      --#{$key}: #{$value};
+  }
+}
