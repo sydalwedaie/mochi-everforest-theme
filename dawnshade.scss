@@ -1,24 +1,24 @@
-@use 'colors' as *;
+@use "colors" as *;
+@use "sass:map";
 
-$dark-contrast: 'medium';
-$light-contrast: 'hard';
+$dark-contrast: "medium";
+$light-contrast: "hard";
+
+@mixin apply-colors($bg, $fg, $contrast) {
+  @each $key, $value in map.get($bg, $contrast) {
+    --#{$key}: #{$value};
+  }
+
+  @each $key, $value in $fg {
+    --#{$key}: #{$value};
+  }
+
+}
 
 html.dark {
-  @each $key, $value in map-get($dark-bg, $dark-contrast) {
-      --#{$key}: #{$value};
-  }
-
-  @each $key, $value in $dark-fg {
-      --#{$key}: #{$value};
-  }
+  @include apply-colors($dark-bg, $dark-fg, $dark-contrast);
 }
 
 html:not(.dark) {
-  @each $key, $value in map-get($light-bg, $light-contrast) {
-      --#{$key}: #{$value};
-  }
-
-  @each $key, $value in $light-fg {
-      --#{$key}: #{$value};
-  }
+  @include apply-colors($light-bg, $light-fg, $light-contrast);
 }
