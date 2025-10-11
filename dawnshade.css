@@ -11,7 +11,7 @@ html.dark {
   --bg-yellow: #4d4c43;
   --bg-green: #425047;
   --bg-blue: #3a515d;
-  --bg-purple: #4a888e;
+  --bg-purple: #4a444e;
   --fg: #d3c6aa;
   --red: #e67e80;
   --orange: #e69875;
@@ -26,15 +26,21 @@ html.dark {
   --statusline1: #a7c080;
   --statusline2: #d3c6aa;
   --statusline3: #e67e80;
+  --mochi--card--background: var(--bg1);
+  --mochi--card-box--background: var(--bg1);
+  --mochi--button--background: var(--bg1);
+  --mochi--side-bar--background: var(--bg-dim);
+  --mochi--box-select--background: var(--bg0);
+  --mochi--box-select--background-hover: var(--bg-dim);
 }
 
 html:not(.dark) {
   --bg-dim: #f2efdf;
   --bg0: #fffbef;
-  --bg1: #f8f5ef;
+  --bg1: #f8f5e4;
   --bg2: #f2efdf;
   --bg3: #edeada;
-  --bg4: #e8e5df;
+  --bg4: #e8e5d5;
   --bg5: #bec5b2;
   --bg-visual: #f0f2d4;
   --bg-red: #ffe7de;
@@ -56,6 +62,108 @@ html:not(.dark) {
   --statusline1: #93b259;
   --statusline2: #708089;
   --statusline3: #e66868;
+  --mochi--card--background: var(--bg0);
+  --mochi--card-box--background: var(--bg0);
+  --mochi--button--background: var(--bg0);
+  --mochi--side-bar--background: var(--bg3);
+  --mochi--box-select--background: var(--bg2);
+  --mochi--box-select--background-hover: var(--bg4);
+}
+
+html {
+  --fonts-monospace: "UbuntuMono Nerd Font Mono" !important;
+  --mochi--card--background-hover: var(--bg-blue) !important;
+  --mochi--review-button--background: var(
+    --mochi--side-bar--background
+  ) !important;
+  --mochi--card--color: var(--fg) !important;
+  --mochi--button-hover--background: var(--bg-blue) !important;
+  --mochi--md-code--background: var(--bg2) !important;
+  --mochi--cloze-2--background-color: var(
+    --mochi--side-bar--background
+  ) !important;
+  --mochi----background-color: var(--bg0) !important;
+  --mochi--jump-to--selection-bg: var(--bg2) !important;
+  --mochi--show-more--background: var(--mochi--side-bar--background) !important;
+  --mochi--show-more--background-hover: var(--bg5) !important;
+  --mochi--progressbar--foreground: var(--bg5) !important;
+  --mochi--inverted-button--background: var(--grey2) !important;
+  --mochi--inverted-button--count-background: var(--grey1) !important;
+  --mochi--progressbar--foreground-red: var(--statusline3) !important;
+  --mochi--re-review--icon: var(--red) !important;
+}
+
+/* Main content background */
+.memo_views_frame_frame-container {
+  background-color: var(--bg1);
+}
+.dark .memo_views_frame_frame-container {
+  background-color: var(--bg0);
+}
+
+/* Fix dashbaord overview background incorrectly set to sidebar color. */
+.memo_views_pages_layout_frame-content > div:nth-child(3) {
+  background-color: initial !important;
+}
+
+/* Fix Show More gradient */
+.memo_views_atoms_card_tile-fade {
+  background: linear-gradient(0deg, rgb(255, 251, 239), rgb(255, 251, 239) 33px, rgba(255, 251, 239, 0));
+}
+.dark .memo_views_atoms_card_tile-fade {
+  background: linear-gradient(0deg, rgb(40, 51, 51), rgb(44, 54, 58) 33px, rgba(46, 47, 48, 0));
+}
+
+/* Fix editor background */
+.memo_views_modal_card_editor-background {
+  background-color: var(--bg0);
+}
+
+/* var(--mochi--box-select--background) */
+/* var(--mochi--box-select--background-hover) */
+/* var(--mochi--cloze-2--background-color-hover) */
+.memo_markdown_styles_markdown-class {
+  font-family: Avenir !important;
+}
+
+.memo_markdown_components_tag-link {
+  font-family: var(--fonts-monospace);
+  padding: 5px;
+}
+
+/* Fix filter menu colors */
+.dark .memo_views_atoms_menu_menu {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Avenir Next Condensed";
+  text-wrap: pretty;
+}
+
+h2 {
+  color: var(--red);
+}
+
+h3 {
+  color: var(--orange);
+}
+
+h4 {
+  color: var(--yellow);
+}
+
+h5 {
+  color: var(--aqua);
+}
+
+h6 {
+  color: var(--blue);
+}
+
+.memo_views_diagrams_diagram-cloze {
+  background-color: var(--grey1);
 }
 
 /*# sourceMappingURL=dawnshade.css.map */
