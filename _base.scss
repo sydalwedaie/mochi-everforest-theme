@@ -3,11 +3,11 @@
 @use "sass:list";
 
 $settings: (
-  dark-contrast: "medium",
-  light-contrast: "hard",
-  rainbow-headings: true,
-  heading-colors: (fg, red, aqua, blue, yellow, orange),
-);
+  dark-contrast,
+  light-contrast,
+  rainbow-headings,
+  heading-colors,
+) !default;
 
 @mixin apply-colors($bg, $fg, $contrast) {
   @each $key, $value in map.get($bg, $contrast) {

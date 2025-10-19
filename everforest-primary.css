@@ -230,7 +230,7 @@ h6 {
 
 /* Rainbow heading colors */
 h1 {
-  color: var(--fg);
+  color: var(--red);
 }
 
 h2 {
@@ -246,11 +246,11 @@ h4 {
 }
 
 h5 {
-  color: var(--yellow);
+  color: var(--orange);
 }
 
 h6 {
-  color: var(--orange);
+  color: var(--yellow);
 }
 
 /* ------------------------------------------- */

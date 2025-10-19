@@ -1,2 +1,9 @@
-@use "base";
+$settings: (
+  dark-contrast: "medium",
+  light-contrast: "hard",
+  rainbow-headings: true,
+  heading-colors: (red, red, aqua, blue, orange, yellow),
+);
+
+@use "base" with ($settings: $settings);;
 @use "syntax-highlighting";
