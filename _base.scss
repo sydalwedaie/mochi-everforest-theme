@@ -1,0 +1,268 @@
+@use "colors" as *;
+@use "sass:map";
+@use "sass:list";
+
+$settings: (
+  dark-contrast: "medium",
+  light-contrast: "hard",
+  rainbow-headings: true,
+  heading-colors: (fg, red, aqua, blue, yellow, orange),
+);
+
+@mixin apply-colors($bg, $fg, $contrast) {
+  @each $key, $value in map.get($bg, $contrast) {
+    --#{$key}: #{$value};
+  }
+  @each $key, $value in $fg {
+    --#{$key}: #{$value};
+  }
+}
+
+html.dark {
+  /* Everforest colors */
+  @include apply-colors($dark-bg, $dark-fg, map.get($settings, dark-contrast));
+
+  /* Mochi variables */
+  --mochi--card--background: var(--bg1);
+  --mochi--card-box--background: var(--bg1);
+  --mochi--button--background: var(--bg1);
+  --mochi--side-bar--background: var(--bg-dim);
+  --mochi--card--background-hover: var(--bg-blue);
+
+  --mochi--box-select--background: var(--bg0);
+  --mochi--box-select--background-hover: var(--bg-blue);
+
+  --mochi--side-bar-icon--color: var(--blue);
+  --mochi--review-history--row-background-dark: var(--bg-dim);
+}
+
+html:not(.dark) {
+  /* Everforest colors */
+  @include apply-colors(
+    $light-bg,
+    $light-fg,
+    map.get($settings, light-contrast)
+  );
+
+  /* Mochi variables */
+  --mochi--card--background: var(--bg0);
+  --mochi--card-box--background: var(--bg0);
+  --mochi--button--background: var(--bg0);
+  --mochi--side-bar--background: var(--bg3);
+  --mochi--card--background-hover: var(--bg-green);
+
+  --mochi--box-select--background: var(--bg2);
+  --mochi--box-select--background-hover: var(--bg-blue);
+
+  --mochi--side-bar-icon--color: var(--grey2);
+  --mochi--review-history--row-background-dark: var(--bg3);
+}
+
+html body {
+  --fonts-monospace: "UbuntuMono Nerd Font Mono";
+
+  --mochi--review-button--background: var(--mochi--side-bar--background);
+  --mochi--card--color: var(--fg);
+  --mochi--button-hover--background: var(--bg-blue);
+
+  --mochi--md-code--background: var(--bg2);
+  --mochi--cloze-2--background-color: var(--mochi--side-bar--background);
+  --mochi----background-color: var(--bg0);
+
+  --mochi--jump-to--selection-bg: var(--bg2);
+  --mochi--show-more--background: var(--mochi--side-bar--background);
+  --mochi--show-more--background-hover: var(--bg5);
+
+  --mochi--progressbar--foreground: var(--bg5);
+
+  --mochi--inverted-button--background: var(--grey2);
+  --mochi--inverted-button--count-background: var(--grey1);
+
+  --mochi--progressbar--foreground-red: var(--statusline3);
+  --mochi--re-review--icon: var(--red);
+}
+
+
+/* ------------------------------------------- */
+/* ------------- memo_views edits -------------*/
+/* ------------------------------------------- */
+
+/* Main content background */
+.memo_views_frame_frame-container {
+  background-color: var(--bg1);
+
+  .dark & {
+    background-color: var(--bg0);
+  }
+}
+
+/* Fix dashbaord overview background incorrectly set to sidebar color. */
+.memo_views_pages_layout_frame-content > div:nth-child(3) {
+  background-color: initial !important;
+}
+
+/* Show More gradient */
+.memo_views_atoms_card_tile-fade {
+  background: linear-gradient(
+    0deg,
+    rgb(255 251 239),
+    rgb(255 251 239) 33px,
+    rgba(255, 251, 239, 0)
+  );
+  .dark & {
+    background: linear-gradient(
+      0deg,
+      rgb(40 51 51),
+      rgb(44 54 58) 33px,
+      rgba(46, 47, 48, 0)
+    );
+  }
+
+  .memo_views_card_list-view_card-container:hover & {
+    opacity: 0.6;
+  }
+}
+
+/* Editor background */
+.memo_views_modal_card_editor-background {
+  background-color: var(--bg0);
+}
+
+/* Cards font color */
+.memo_views_modal_modal-dialog {
+  color: var(--fg);
+}
+
+/* Fix filter menu colors in dark mode */
+.dark .memo_views_atoms_menu_menu {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* cloze backgrounds */
+.memo_views_diagrams_diagram-cloze {
+  background-color: var(--grey1);
+}
+
+/* Make foot note jumps smooth */
+.memo_views_modal_modal-container {
+  scroll-behavior: smooth;
+}
+
+/* ------------------------------------------- */
+/* ----------- memo-markdown edits ------------*/
+/* ------------------------------------------- */
+
+/* Cards font family */
+.memo_markdown_styles_markdown-class {
+  // font-family: Avenir !important;
+}
+
+/* Tags - inline and in card status */
+.memo_markdown_components_tag-link {
+  font-family: var(--fonts-monospace);
+  padding: 5px;
+}
+
+/* Inline code style */
+.memo_markdown_styles_markdown-class code:not(pre code):not(kbd code) {
+  color: var(--blue) !important;
+  border: 1px solid;
+  white-space: nowrap; /* prevent work break for inline code */
+  margin-right: 0.1em; /* prevent trailing punctuations touching the border */
+}
+
+/* Highlighted text with == */
+.memo_markdown_styles_markdown-class mark {
+  border-radius: 30px;
+  color: var(--bg0);
+  background-color: var(--yellow);
+  background-image: none;
+  padding: 0.2em 0.4em !important;
+  margin: initial;
+}
+
+
+/* ------------------------------------------- */
+/* ----------- Raw HTML tags edits ------------*/
+/* ------------------------------------------- */
+
+/* Keyboard inputs style - <kbd> tag */
+kbd {
+  font-family: var(--fonts-monospace);
+  color: var(--statusline3) !important;
+  background: var(--bg1);
+  box-shadow:
+    inset 0px 0px 0px 1px rgb(0 0 0 / 5%),
+    inset 0px -3px 0px 0px rgb(0 0 0 / 10%);
+  border-radius: 4px;
+  padding: 0.2em 0.45em;
+
+  .dark & {
+    background: var(--bg0);
+    box-shadow:
+      inset 0px 0px 0px 1px rgb(0 0 0 / 5%),
+      inset 0px -3px 0px 0px rgb(0 0 0 / 20%);
+  }
+}
+
+/* Headings - general */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Avenir Next Condensed";
+  font-weight: 500 !important;
+  text-wrap: pretty; /* Not yet supported in the Electron version Mochi is using */
+}
+
+/* Headings font-size */
+h2 {
+  font-size: 1.8em !important;
+}
+
+h3 {
+  font-size: 1.5em !important;
+}
+
+h4 {
+  font-size: 1.3em !important;
+}
+
+h5 {
+  font-size: 1em !important;
+}
+
+h6 {
+  font-size: 1em !important;
+}
+
+/* Rainbow heading colors */
+$heading-colors: map.get($settings, heading-colors);
+
+@if map.get($settings, rainbow-headings) {
+  @for $i from 1 through list.length($heading-colors) {
+    h#{$i} {
+      color: var(--#{list.nth($heading-colors, $i)});
+    }
+  }
+}
+
+
+/* ------------------------------------------- */
+/* ------------------ Tables ------------------*/
+/* ------------------------------------------- */
+
+table {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+thead tr {
+  background-color: var(--bg-green);
+}
+
+tbody tr:nth-child(odd) {
+  background-color: var(--bg2);
+}

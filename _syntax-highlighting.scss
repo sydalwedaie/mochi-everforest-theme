@@ -1,0 +1,85 @@
+.hljs {
+  color: var(--fg) !important;
+  background: var(--bg-dim) !important;
+  padding: 0.3em !important /* fix disparity between light/dark modes */
+}
+
+.hljs-comment,
+.hljs-quote {
+  &,
+  .dark & {
+    color: var(--grey1);
+  }
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-formula,
+.hljs-number {
+  &,
+  .dark & {
+    color: var(--purple);
+  }
+}
+
+.hljs-section,
+.hljs-name,
+.hljs-selector-tag,
+.hljs-deletion,
+.hljs-subst {
+  &,
+  .dark & {
+    color: var(--red);
+  }
+}
+
+.hljs-literal {
+  &,
+  .dark & {
+    color: var(--aqua);
+  }
+}
+
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta-string {
+  &,
+  .dark & {
+    color: var(--green);
+  }
+}
+
+.hljs-built_in,
+.hljs-class .hljs-title {
+  &,
+  .dark & {
+    color: var(--yellow);
+  }
+}
+
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-type,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  &,
+  .dark & {
+    color: var(--orange);
+  }
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-title {
+  &,
+  .dark & {
+    color: var(--blue);
+  }
+}

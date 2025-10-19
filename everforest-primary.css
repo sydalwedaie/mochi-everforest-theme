@@ -1,0 +1,358 @@
+html.dark {
+  /* Everforest colors */
+  --bg-dim: #232a2e;
+  --bg0: #2d353b;
+  --bg1: #343f44;
+  --bg2: #3d484d;
+  --bg3: #475258;
+  --bg4: #4f585e;
+  --bg5: #56635f;
+  --bg-visual: #543a48;
+  --bg-red: #514045;
+  --bg-yellow: #4d4c43;
+  --bg-green: #425047;
+  --bg-blue: #3a515d;
+  --bg-purple: #4a444e;
+  --fg: #d3c6aa;
+  --red: #e67e80;
+  --orange: #e69875;
+  --yellow: #dbbc7f;
+  --green: #a7c080;
+  --aqua: #83c092;
+  --blue: #7fbbb3;
+  --purple: #d699b6;
+  --grey0: #7a8478;
+  --grey1: #859289;
+  --grey2: #9da9a0;
+  --statusline1: #a7c080;
+  --statusline2: #d3c6aa;
+  --statusline3: #e67e80;
+  /* Mochi variables */
+  --mochi--card--background: var(--bg1);
+  --mochi--card-box--background: var(--bg1);
+  --mochi--button--background: var(--bg1);
+  --mochi--side-bar--background: var(--bg-dim);
+  --mochi--card--background-hover: var(--bg-blue);
+  --mochi--box-select--background: var(--bg0);
+  --mochi--box-select--background-hover: var(--bg-blue);
+  --mochi--side-bar-icon--color: var(--blue);
+  --mochi--review-history--row-background-dark: var(--bg-dim);
+}
+
+html:not(.dark) {
+  /* Everforest colors */
+  --bg-dim: #f2efdf;
+  --bg0: #fffbef;
+  --bg1: #f8f5e4;
+  --bg2: #f2efdf;
+  --bg3: #edeada;
+  --bg4: #e8e5d5;
+  --bg5: #bec5b2;
+  --bg-visual: #f0f2d4;
+  --bg-red: #ffe7de;
+  --bg-yellow: #fef2d5;
+  --bg-green: #f3f5d9;
+  --bg-blue: #ecf5ed;
+  --bg-purple: #fceced;
+  --fg: #5c6a72;
+  --red: #f85552;
+  --orange: #f57d26;
+  --yellow: #dfa000;
+  --green: #8da101;
+  --aqua: #35a77c;
+  --blue: #3a94c5;
+  --purple: #df69ba;
+  --grey0: #a6b0a0;
+  --grey1: #939f91;
+  --grey2: #829181;
+  --statusline1: #93b259;
+  --statusline2: #708089;
+  --statusline3: #e66868;
+  /* Mochi variables */
+  --mochi--card--background: var(--bg0);
+  --mochi--card-box--background: var(--bg0);
+  --mochi--button--background: var(--bg0);
+  --mochi--side-bar--background: var(--bg3);
+  --mochi--card--background-hover: var(--bg-green);
+  --mochi--box-select--background: var(--bg2);
+  --mochi--box-select--background-hover: var(--bg-blue);
+  --mochi--side-bar-icon--color: var(--grey2);
+  --mochi--review-history--row-background-dark: var(--bg3);
+}
+
+html body {
+  --fonts-monospace: "UbuntuMono Nerd Font Mono";
+  --mochi--review-button--background: var(--mochi--side-bar--background);
+  --mochi--card--color: var(--fg);
+  --mochi--button-hover--background: var(--bg-blue);
+  --mochi--md-code--background: var(--bg2);
+  --mochi--cloze-2--background-color: var(--mochi--side-bar--background);
+  --mochi----background-color: var(--bg0);
+  --mochi--jump-to--selection-bg: var(--bg2);
+  --mochi--show-more--background: var(--mochi--side-bar--background);
+  --mochi--show-more--background-hover: var(--bg5);
+  --mochi--progressbar--foreground: var(--bg5);
+  --mochi--inverted-button--background: var(--grey2);
+  --mochi--inverted-button--count-background: var(--grey1);
+  --mochi--progressbar--foreground-red: var(--statusline3);
+  --mochi--re-review--icon: var(--red);
+}
+
+/* ------------------------------------------- */
+/* ------------- memo_views edits -------------*/
+/* ------------------------------------------- */
+/* Main content background */
+.memo_views_frame_frame-container {
+  background-color: var(--bg1);
+}
+.dark .memo_views_frame_frame-container {
+  background-color: var(--bg0);
+}
+
+/* Fix dashbaord overview background incorrectly set to sidebar color. */
+.memo_views_pages_layout_frame-content > div:nth-child(3) {
+  background-color: initial !important;
+}
+
+/* Show More gradient */
+.memo_views_atoms_card_tile-fade {
+  background: linear-gradient(0deg, rgb(255, 251, 239), rgb(255, 251, 239) 33px, rgba(255, 251, 239, 0));
+}
+.dark .memo_views_atoms_card_tile-fade {
+  background: linear-gradient(0deg, rgb(40, 51, 51), rgb(44, 54, 58) 33px, rgba(46, 47, 48, 0));
+}
+.memo_views_card_list-view_card-container:hover .memo_views_atoms_card_tile-fade {
+  opacity: 0.6;
+}
+
+/* Editor background */
+.memo_views_modal_card_editor-background {
+  background-color: var(--bg0);
+}
+
+/* Cards font color */
+.memo_views_modal_modal-dialog {
+  color: var(--fg);
+}
+
+/* Fix filter menu colors in dark mode */
+.dark .memo_views_atoms_menu_menu {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* cloze backgrounds */
+.memo_views_diagrams_diagram-cloze {
+  background-color: var(--grey1);
+}
+
+/* Make foot note jumps smooth */
+.memo_views_modal_modal-container {
+  scroll-behavior: smooth;
+}
+
+/* ------------------------------------------- */
+/* ----------- memo-markdown edits ------------*/
+/* ------------------------------------------- */
+/* Cards font family */
+/* Tags - inline and in card status */
+.memo_markdown_components_tag-link {
+  font-family: var(--fonts-monospace);
+  padding: 5px;
+}
+
+/* Inline code style */
+.memo_markdown_styles_markdown-class code:not(pre code):not(kbd code) {
+  color: var(--blue) !important;
+  border: 1px solid;
+  white-space: nowrap; /* prevent work break for inline code */
+  margin-right: 0.1em; /* prevent trailing punctuations touching the border */
+}
+
+/* Highlighted text with == */
+.memo_markdown_styles_markdown-class mark {
+  border-radius: 30px;
+  color: var(--bg0);
+  background-color: var(--yellow);
+  background-image: none;
+  padding: 0.2em 0.4em !important;
+  margin: initial;
+}
+
+/* ------------------------------------------- */
+/* ----------- Raw HTML tags edits ------------*/
+/* ------------------------------------------- */
+/* Keyboard inputs style - <kbd> tag */
+kbd {
+  font-family: var(--fonts-monospace);
+  color: var(--statusline3) !important;
+  background: var(--bg1);
+  box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.05), inset 0px -3px 0px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 0.2em 0.45em;
+}
+.dark kbd {
+  background: var(--bg0);
+  box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.05), inset 0px -3px 0px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* Headings - general */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Avenir Next Condensed";
+  font-weight: 500 !important;
+  text-wrap: pretty; /* Not yet supported in the Electron version Mochi is using */
+}
+
+/* Headings font-size */
+h2 {
+  font-size: 1.8em !important;
+}
+
+h3 {
+  font-size: 1.5em !important;
+}
+
+h4 {
+  font-size: 1.3em !important;
+}
+
+h5 {
+  font-size: 1em !important;
+}
+
+h6 {
+  font-size: 1em !important;
+}
+
+/* Rainbow heading colors */
+h1 {
+  color: var(--fg);
+}
+
+h2 {
+  color: var(--red);
+}
+
+h3 {
+  color: var(--aqua);
+}
+
+h4 {
+  color: var(--blue);
+}
+
+h5 {
+  color: var(--yellow);
+}
+
+h6 {
+  color: var(--orange);
+}
+
+/* ------------------------------------------- */
+/* ------------------ Tables ------------------*/
+/* ------------------------------------------- */
+table {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+thead tr {
+  background-color: var(--bg-green);
+}
+
+tbody tr:nth-child(odd) {
+  background-color: var(--bg2);
+}
+
+.hljs {
+  color: var(--fg) !important;
+  background: var(--bg-dim) !important;
+  padding: 0.3em !important;
+}
+
+.hljs-comment, .dark .hljs-comment,
+.hljs-quote,
+.dark .hljs-quote {
+  color: var(--grey1);
+}
+
+.hljs-doctag, .dark .hljs-doctag,
+.hljs-keyword,
+.dark .hljs-keyword,
+.hljs-formula,
+.dark .hljs-formula,
+.hljs-number,
+.dark .hljs-number {
+  color: var(--purple);
+}
+
+.hljs-section, .dark .hljs-section,
+.hljs-name,
+.dark .hljs-name,
+.hljs-selector-tag,
+.dark .hljs-selector-tag,
+.hljs-deletion,
+.dark .hljs-deletion,
+.hljs-subst,
+.dark .hljs-subst {
+  color: var(--red);
+}
+
+.hljs-literal, .dark .hljs-literal {
+  color: var(--aqua);
+}
+
+.hljs-string, .dark .hljs-string,
+.hljs-regexp,
+.dark .hljs-regexp,
+.hljs-addition,
+.dark .hljs-addition,
+.hljs-attribute,
+.dark .hljs-attribute,
+.hljs-meta-string,
+.dark .hljs-meta-string {
+  color: var(--green);
+}
+
+.hljs-built_in, .dark .hljs-built_in,
+.hljs-class .hljs-title,
+.dark .hljs-class .hljs-title {
+  color: var(--yellow);
+}
+
+.hljs-attr, .dark .hljs-attr,
+.hljs-variable,
+.dark .hljs-variable,
+.hljs-template-variable,
+.dark .hljs-template-variable,
+.hljs-type,
+.dark .hljs-type,
+.hljs-selector-class,
+.dark .hljs-selector-class,
+.hljs-selector-attr,
+.dark .hljs-selector-attr,
+.hljs-selector-pseudo,
+.dark .hljs-selector-pseudo {
+  color: var(--orange);
+}
+
+.hljs-symbol, .dark .hljs-symbol,
+.hljs-bullet,
+.dark .hljs-bullet,
+.hljs-link,
+.dark .hljs-link,
+.hljs-meta,
+.dark .hljs-meta,
+.hljs-selector-id,
+.dark .hljs-selector-id,
+.hljs-title,
+.dark .hljs-title {
+  color: var(--blue);
+}
+
+/*# sourceMappingURL=everforest-primary.css.map */
