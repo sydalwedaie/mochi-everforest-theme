@@ -12,13 +12,13 @@
   }
 }
 
-/* ------------------------------------------- */
-/* ---------------- Root styles ---------------*/
-/* ------------------------------------------- */
+/* -------------------------------------------- */
+/* ---------------- Root styles --------------- */
+/* -------------------------------------------- */
 
 html.dark {
   /* Everforest colors */
-  @include apply-colors($dark-bg, $dark-fg, map.get($settings, dark-contrast));
+  @include apply-colors($dark-bg, $dark-fg, map.get($settings, contrast-dark));
 
   /* Mochi variables */
   --mochi--card--background: var(--bg1);
@@ -39,7 +39,7 @@ html:not(.dark) {
   @include apply-colors(
     $light-bg,
     $light-fg,
-    map.get($settings, light-contrast)
+    map.get($settings, contrast-light)
   );
 
   /* Mochi variables */
@@ -80,14 +80,16 @@ html body {
   --mochi--re-review--icon: var(--red);
 }
 
-/* ------------------------------------------- */
-/* ------------- memo_views edits -------------*/
-/* ------------------------------------------- */
+/* -------------------------------------------- */
+/* ------------- memo_views edits ------------- */
+/* -------------------------------------------- */
 
 /* Main content background */
 .memo_views_frame_frame-container {
   background-color: var(--bg1);
   background-size: 50px 50px;
+
+  /* Background pattern - dots */
   background-image: radial-gradient(
     circle,
     hsla(37, 38%, 83%, 1) 1px,
@@ -147,7 +149,7 @@ html body {
   color: rgba(255, 255, 255, 0.7);
 }
 
-/* cloze backgrounds */
+/* Cloze backgrounds */
 .memo_views_diagrams_diagram-cloze {
   background-color: var(--grey1);
 }
@@ -157,9 +159,9 @@ html body {
   scroll-behavior: smooth;
 }
 
-/* ------------------------------------------- */
-/* ----------- memo_markdown edits ------------*/
-/* ------------------------------------------- */
+/* -------------------------------------------- */
+/* ----------- memo_markdown edits ------------ */
+/* -------------------------------------------- */
 
 /* Cards font family */
 .memo_markdown_styles_markdown-class {
@@ -192,22 +194,25 @@ html body {
 }
 
 .memo_markdown_components_inline-link {
+  /* Make sure links wrap around */
   white-space: normal;
+
+  /* Custome styles */
+  background: var(--bg2);
+  border: 1px solid var(--bg4)
 }
 
+/* Increase monospace font */
+/* Only for UbutntuMono Nerd Mono font because it's inherently smaller */
 .memo_markdown_styles_markdown-class code,
 .memo_markdown_styles_markdown-class pre {
   font-size: 0.95em !important;
 }
 
-/* Reference link style */
-.memo_markdown_components_inline-link {
-  background: var(--bg3);
-}
 
-/* ------------------------------------------- */
-/* ----------- Raw HTML tags edits ------------*/
-/* ------------------------------------------- */
+/* -------------------------------------------- */
+/* ----------- Raw HTML tags edits ------------ */
+/* -------------------------------------------- */
 
 strong {
   color: var(--statusline3);
@@ -221,27 +226,9 @@ strong em {
   color: var(--purple);
 }
 
-/* Keyboard inputs style - <kbd> tag */
-kbd {
-  font-family: var(--fonts-monospace);
-  color: var(--statusline3) !important;
-  background: var(--bg1);
-  box-shadow:
-    inset 0px 0px 0px 1px rgb(0 0 0 / 5%),
-    inset 0px -3px 0px 0px rgb(0 0 0 / 10%);
-  border-radius: 4px;
-  padding: 0.2em 0.45em;
-  margin-right: 0.1em;
+/* ----------------- Headings ----------------- */
 
-  .dark & {
-    background: var(--bg0);
-    box-shadow:
-      inset 0px 0px 0px 1px rgb(0 0 0 / 5%),
-      inset 0px -3px 0px 0px rgb(0 0 0 / 20%);
-  }
-}
-
-/* Headings - general */
+/* General */
 h1,
 h2,
 h3,
@@ -253,7 +240,7 @@ h6 {
   text-wrap: pretty; /* Not yet supported in the Electron version Mochi is using */
 }
 
-/* Headings font-size */
+/* Font size */
 h2 {
   font-size: 1.8em !important;
 }
@@ -274,18 +261,38 @@ h6 {
   font-size: 1em !important;
 }
 
-/* Rainbow heading colors */
-$heading-colors: map.get($settings, heading-colors);
-
 @if map.get($settings, rainbow-headings) {
-  @for $i from 1 through list.length($heading-colors) {
+  /* Rainbow headings */
+  $rainbow-colors: map.get($settings, rainbow-colors);
+  @for $i from 1 through list.length($rainbow-colors) {
     h#{$i} {
-      color: var(--#{list.nth($heading-colors, $i)});
+      color: var(--#{list.nth($rainbow-colors, $i)});
     }
   }
 }
 
-/* ------------------ Tables ------------------*/
+/* -------- Custom keyboard input style ------- */
+
+kbd {
+  font-family: var(--fonts-monospace);
+  color: var(--statusline3) !important;
+  background: var(--bg1);
+  box-shadow:
+    inset 0px 0px 0px 1px rgb(0 0 0 / 5%),
+    inset 0px -3px 0px 0px rgb(0 0 0 / 10%);
+  border-radius: 4px;
+  padding: 0.2em 0.45em;
+  margin-right: 0.1em;
+
+  .dark & {
+    background: var(--bg0);
+    box-shadow:
+      inset 0px 0px 0px 1px rgb(0 0 0 / 5%),
+      inset 0px -3px 0px 0px rgb(0 0 0 / 20%);
+  }
+}
+
+/* ------------------ Tables ------------------ */
 
 table {
   border-radius: 5px;
@@ -300,52 +307,51 @@ tbody tr:nth-child(odd) {
   background-color: var(--bg2);
 }
 
-/* ------------------- Lists -------------------*/
+/* ------------ Custom list styles ------------ */
 
-ol > li,
-ul > li {
-  position: relative;
-}
+@if map.get($settings, custom-ol-bullet) {
+  ol > li,
+  ul > li {
+    position: relative;
+  }
 
-ol > li {
-  list-style-type: none;
-}
+  ol > li {
+    list-style-type: none;
+  }
 
-ol > li::before {
-  --bullet-size: calc(1.5 * 1rem);
-  --sl-text-xs: 0.8125rem;
-  --sl-color-white: var(--fg);
-  --sl-color-gray-6: var(--bg2);
-  --sl-color-gray-5: var(--bg4);
-  content: counter(list-item);
-  position: absolute;
-  top: 0.4em;
-  inset-inline-start: calc(-1.4 * var(--bullet-size));
-  width: var(--bullet-size);
-  height: var(--bullet-size);
-  line-height: var(--bullet-size);
-  font-size: var(--sl-text-xs);
-  font-weight: 600;
-  text-align: center;
-  color: var(--sl-color-white);
-  background-color: var(--sl-color-gray-6);
-  border-radius: 99rem;
-  box-shadow: inset 0 0 0 1px var(--sl-color-gray-5);
-  font-family: Cascadia Code;
-}
+  /* Custom numbered bullets */
+  ol > li::before {
+    --bullet-size: calc(1.5 * 1rem);
+    content: counter(list-item);
+    position: absolute;
+    top: 0.4em;
+    inset-inline-start: calc(-1.4 * var(--bullet-size));
+    width: var(--bullet-size);
+    height: var(--bullet-size);
+    line-height: var(--bullet-size);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--fg);
+    background-color: var(--bg2);
+    border-radius: 99rem;
+    box-shadow: inset 0 0 0 1px var(--bg4);
+    font-family: Cascadia Code;
+  }
 
-/* Indent lines */
-ol > li::after,
-ul > li::after {
-  content: "";
-  position: absolute;
-  top: 35px;
-  bottom: 5px;
-  inset-inline-start: -22px;
-  width: 1px;
-  background-color: var(--bg4);
-}
+  /* Indent lines */
+  ol > li::after,
+  ul > li::after {
+    content: "";
+    position: absolute;
+    top: 35px;
+    bottom: 5px;
+    inset-inline-start: -22px;
+    width: 1px;
+    background-color: var(--bg4);
+  }
 
-ul > li::after {
-  inset-inline-start: -15px;
+  ul > li::after {
+    inset-inline-start: -15px;
+  }
 }
