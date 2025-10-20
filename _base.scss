@@ -12,6 +12,18 @@
   }
 }
 
+@mixin btn-3d {
+  box-shadow:
+    inset 0px 0px 0px 1px rgb(0 0 0 / 5%),
+    inset 0px -3px 0px 0px rgb(0 0 0 / 15%) !important;
+
+  .dark & {
+    box-shadow:
+      inset 0px 0px 0px 1px rgb(0 0 0 / 5%),
+      inset 0px -3px 0px 0px rgb(0 0 0 / 25%) !important;
+  }
+}
+
 /* -------------------------------------------- */
 /* ---------------- Root styles --------------- */
 /* -------------------------------------------- */
@@ -159,6 +171,12 @@ html body {
   scroll-behavior: smooth;
 }
 
+/* 3D button effect */
+.memo_views_atoms_button_default-button,
+.memo_views_atoms_button_inverted-button {
+  @include btn-3d;
+}
+
 /* -------------------------------------------- */
 /* ----------- memo_markdown edits ------------ */
 /* -------------------------------------------- */
@@ -199,7 +217,7 @@ html body {
 
   /* Custome styles */
   background: var(--bg2);
-  border: 1px solid var(--bg4)
+  border: 1px solid var(--bg4);
 }
 
 /* Increase monospace font */
@@ -209,6 +227,20 @@ html body {
   font-size: 0.95em !important;
 }
 
+/* Used for footnote legends */
+.memo_markdown_components_blue-link {
+  font-family: "Cascadia code";
+  opacity: 0.9;
+
+  h1 &,
+  h2 &,
+  h3 &,
+  h4 &,
+  h5 &,
+  h6 & {
+    font-size: initial;
+  }
+}
 
 /* -------------------------------------------- */
 /* ----------- Raw HTML tags edits ------------ */
@@ -277,19 +309,15 @@ kbd {
   font-family: var(--fonts-monospace);
   color: var(--statusline3) !important;
   background: var(--bg1);
-  box-shadow:
-    inset 0px 0px 0px 1px rgb(0 0 0 / 5%),
-    inset 0px -3px 0px 0px rgb(0 0 0 / 10%);
   border-radius: 4px;
   padding: 0.2em 0.45em;
   margin-right: 0.1em;
 
   .dark & {
     background: var(--bg0);
-    box-shadow:
-      inset 0px 0px 0px 1px rgb(0 0 0 / 5%),
-      inset 0px -3px 0px 0px rgb(0 0 0 / 20%);
   }
+
+  @include btn-3d;
 }
 
 /* ------------------ Tables ------------------ */
@@ -325,7 +353,7 @@ tbody tr:nth-child(odd) {
     content: counter(list-item);
     position: absolute;
     top: 0.4em;
-    inset-inline-start: calc(-1.4 * var(--bullet-size));
+    inset-inline-start: calc(-1.25 * var(--bullet-size));
     width: var(--bullet-size);
     height: var(--bullet-size);
     line-height: var(--bullet-size);
@@ -346,7 +374,7 @@ tbody tr:nth-child(odd) {
     position: absolute;
     top: 35px;
     bottom: 5px;
-    inset-inline-start: -22px;
+    inset-inline-start: -18px;
     width: 1px;
     background-color: var(--bg4);
   }
