@@ -50,19 +50,20 @@ The theme is built with SCSS and offers extensive customization options:
 1. **Prerequisites**: [Install SASS](https://sass-lang.com/install)
 2. **Edit Settings**: Open `_settings.scss` and modify as desired:
 3. **Compile**: Generate the CSS file
-   ```bash
-   sass everforest-primary.scss everforest-primary.css
-   ```
+
+```bash
+sass --watch everforest-primary.scss everforest-primary.css
+```
 
 ### Customization Options
 
 #### Contrast Levels
-- **Hard**: Maximum contrast between background and foreground
+- **Hard**: Maximum contrast between background and foreground (default for light mode)
 - **Medium**: Balanced contrast (default for dark mode)
 - **Soft**: Lower contrast for reduced eye strain
 
 #### Rainbow Headings
-Enable or disable colorful heading styles by setting `rainbow-headings` to `true` or `false`. When enabled, you can customize which color is applied to each heading level (H1-H6) using the `heading-colors` list.
+Enable or disable colorful heading styles by setting `rainbow-headings` to `true` or `false`. When enabled, you can customize which color is applied to each heading level (H1-H6) using the `rainbow-colors` list.
 
 Available colors: `red`, `orange`, `yellow`, `green`, `aqua`, `blue`, `purple`
 
@@ -80,20 +81,6 @@ Available colors: `red`, `orange`, `yellow`, `green`, `aqua`, `blue`, `purple`
 └── everforest-primary.css        # Compiled output (ready to use)
 ```
 
-## Color Palette
-
-The theme uses the Everforest color scheme:
-
-**Dark Mode Colors**: Warm, muted tones with excellent readability
-- Background: Deep grays with subtle green tints
-- Foreground: Warm beige (#d3c6aa)
-- Accents: Red, orange, yellow, green, aqua, blue, purple
-
-**Light Mode Colors**: Soft, natural tones
-- Background: Warm off-white and cream shades
-- Foreground: Cool gray (#5c6a72)
-- Accents: Vibrant but comfortable variants of the dark mode palette
-
 ## References
 
 - [Original Everforest by sainnhe](https://github.com/sainnhe/everforest)
@@ -107,4 +94,4 @@ Feel free to customize this theme to your preferences! If you create improvement
 
 ## License
 
-This theme is based on the Everforest color scheme. Please refer to the original Everforest repository for licensing information.
+This theme is based on the Everforest color scheme and the Obsidian Primary theme. Please refer to the original repositories for licensing information.
