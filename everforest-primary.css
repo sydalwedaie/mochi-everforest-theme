@@ -1,3 +1,6 @@
+/* ------------------------------------------- */
+/* ---------------- Root styles ---------------*/
+/* ------------------------------------------- */
 html.dark {
   /* Everforest colors */
   --bg-dim: #232a2e;
@@ -81,7 +84,7 @@ html:not(.dark) {
 }
 
 html body {
-  --fonts-monospace: "UbuntuMono Nerd Font Mono";
+  --fonts-monospace: UbuntuMono Nerd Font Mono;
   --mochi--review-button--background: var(--mochi--side-bar--background);
   --mochi--card--color: var(--fg);
   --mochi--button-hover--background: var(--bg-blue);
@@ -104,9 +107,12 @@ html body {
 /* Main content background */
 .memo_views_frame_frame-container {
   background-color: var(--bg1);
+  background-size: 50px 50px;
+  background-image: radial-gradient(circle, hsl(37, 38%, 83%) 1px, rgba(0, 0, 0, 0) 1px);
 }
 .dark .memo_views_frame_frame-container {
   background-color: var(--bg0);
+  background-image: radial-gradient(circle, hsl(31, 27%, 25%) 1px, rgba(0, 0, 0, 0) 1px);
 }
 
 /* Fix dashbaord overview background incorrectly set to sidebar color. */
@@ -128,6 +134,7 @@ html body {
 /* Editor background */
 .memo_views_modal_card_editor-background {
   background-color: var(--bg0);
+  font-size: 0.95em !important;
 }
 
 /* Cards font color */
@@ -151,7 +158,7 @@ html body {
 }
 
 /* ------------------------------------------- */
-/* ----------- memo-markdown edits ------------*/
+/* ----------- memo_markdown edits ------------*/
 /* ------------------------------------------- */
 /* Cards font family */
 /* Tags - inline and in card status */
@@ -170,17 +177,44 @@ html body {
 
 /* Highlighted text with == */
 .memo_markdown_styles_markdown-class mark {
-  border-radius: 30px;
+  border-radius: 0;
   color: var(--bg0);
-  background-color: var(--yellow);
+  background-color: var(--aqua);
   background-image: none;
-  padding: 0.2em 0.4em !important;
+  padding: 0.2em;
   margin: initial;
+  vertical-align: middle;
+}
+
+.memo_markdown_components_inline-link {
+  white-space: normal;
+}
+
+.memo_markdown_styles_markdown-class code,
+.memo_markdown_styles_markdown-class pre {
+  font-size: 0.95em !important;
+}
+
+/* Reference link style */
+.memo_markdown_components_inline-link {
+  background: var(--bg3);
 }
 
 /* ------------------------------------------- */
 /* ----------- Raw HTML tags edits ------------*/
 /* ------------------------------------------- */
+strong {
+  color: var(--statusline3);
+}
+
+em {
+  color: var(--aqua);
+}
+
+strong em {
+  color: var(--purple);
+}
+
 /* Keyboard inputs style - <kbd> tag */
 kbd {
   font-family: var(--fonts-monospace);
@@ -189,6 +223,7 @@ kbd {
   box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.05), inset 0px -3px 0px 0px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   padding: 0.2em 0.45em;
+  margin-right: 0.1em;
 }
 .dark kbd {
   background: var(--bg0);
@@ -230,7 +265,7 @@ h6 {
 
 /* Rainbow heading colors */
 h1 {
-  color: var(--red);
+  color: var(--fg);
 }
 
 h2 {
@@ -253,9 +288,7 @@ h6 {
   color: var(--yellow);
 }
 
-/* ------------------------------------------- */
 /* ------------------ Tables ------------------*/
-/* ------------------------------------------- */
 table {
   border-radius: 5px;
   overflow: hidden;
@@ -269,6 +302,58 @@ tbody tr:nth-child(odd) {
   background-color: var(--bg2);
 }
 
+/* ------------------- Lists -------------------*/
+ol > li,
+ul > li {
+  position: relative;
+}
+
+ol > li {
+  list-style-type: none;
+}
+
+ol > li::before {
+  --bullet-size: calc(1.5 * 1rem);
+  --sl-text-xs: 0.8125rem;
+  --sl-color-white: var(--fg);
+  --sl-color-gray-6: var(--bg2);
+  --sl-color-gray-5: var(--bg4);
+  content: counter(list-item);
+  position: absolute;
+  top: 0.4em;
+  inset-inline-start: calc(-1.4 * var(--bullet-size));
+  width: var(--bullet-size);
+  height: var(--bullet-size);
+  line-height: var(--bullet-size);
+  font-size: var(--sl-text-xs);
+  font-weight: 600;
+  text-align: center;
+  color: var(--sl-color-white);
+  background-color: var(--sl-color-gray-6);
+  border-radius: 99rem;
+  box-shadow: inset 0 0 0 1px var(--sl-color-gray-5);
+  font-family: Cascadia Code;
+}
+
+/* Indent lines */
+ol > li::after,
+ul > li::after {
+  content: "";
+  position: absolute;
+  top: 35px;
+  bottom: 5px;
+  inset-inline-start: -22px;
+  width: 1px;
+  background-color: var(--bg4);
+}
+
+ul > li::after {
+  inset-inline-start: -15px;
+}
+
+/* ------------------------------------------- */
+/* ----------- Syntax highlighting ------------*/
+/* ------------------------------------------- */
 .hljs {
   color: var(--fg) !important;
   background: var(--bg-dim) !important;

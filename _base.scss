@@ -1,13 +1,7 @@
 @use "colors" as *;
+@use "settings" as *;
 @use "sass:map";
 @use "sass:list";
-
-$settings: (
-  dark-contrast,
-  light-contrast,
-  rainbow-headings,
-  heading-colors,
-) !default;
 
 @mixin apply-colors($bg, $fg, $contrast) {
   @each $key, $value in map.get($bg, $contrast) {
@@ -17,6 +11,10 @@ $settings: (
     --#{$key}: #{$value};
   }
 }
+
+/* ------------------------------------------- */
+/* ---------------- Root styles ---------------*/
+/* ------------------------------------------- */
 
 html.dark {
   /* Everforest colors */
@@ -59,7 +57,7 @@ html:not(.dark) {
 }
 
 html body {
-  --fonts-monospace: "UbuntuMono Nerd Font Mono";
+  --fonts-monospace: #{map.get($settings, font-monospace)};
 
   --mochi--review-button--background: var(--mochi--side-bar--background);
   --mochi--card--color: var(--fg);
@@ -82,7 +80,6 @@ html body {
   --mochi--re-review--icon: var(--red);
 }
 
-
 /* ------------------------------------------- */
 /* ------------- memo_views edits -------------*/
 /* ------------------------------------------- */
@@ -90,9 +87,20 @@ html body {
 /* Main content background */
 .memo_views_frame_frame-container {
   background-color: var(--bg1);
+  background-size: 50px 50px;
+  background-image: radial-gradient(
+    circle,
+    hsla(37, 38%, 83%, 1) 1px,
+    rgba(0, 0, 0, 0) 1px
+  );
 
   .dark & {
     background-color: var(--bg0);
+    background-image: radial-gradient(
+      circle,
+      hsla(31, 27%, 25%, 1) 1px,
+      rgba(0, 0, 0, 0) 1px
+    );
   }
 }
 
@@ -126,6 +134,7 @@ html body {
 /* Editor background */
 .memo_views_modal_card_editor-background {
   background-color: var(--bg0);
+  font-size: 0.95em !important;
 }
 
 /* Cards font color */
@@ -149,7 +158,7 @@ html body {
 }
 
 /* ------------------------------------------- */
-/* ----------- memo-markdown edits ------------*/
+/* ----------- memo_markdown edits ------------*/
 /* ------------------------------------------- */
 
 /* Cards font family */
@@ -173,18 +182,44 @@ html body {
 
 /* Highlighted text with == */
 .memo_markdown_styles_markdown-class mark {
-  border-radius: 30px;
+  border-radius: 0;
   color: var(--bg0);
-  background-color: var(--yellow);
+  background-color: var(--aqua);
   background-image: none;
-  padding: 0.2em 0.4em !important;
+  padding: 0.2em;
   margin: initial;
+  vertical-align: middle;
 }
 
+.memo_markdown_components_inline-link {
+  white-space: normal;
+}
+
+.memo_markdown_styles_markdown-class code,
+.memo_markdown_styles_markdown-class pre {
+  font-size: 0.95em !important;
+}
+
+/* Reference link style */
+.memo_markdown_components_inline-link {
+  background: var(--bg3);
+}
 
 /* ------------------------------------------- */
 /* ----------- Raw HTML tags edits ------------*/
 /* ------------------------------------------- */
+
+strong {
+  color: var(--statusline3);
+}
+
+em {
+  color: var(--aqua);
+}
+
+strong em {
+  color: var(--purple);
+}
 
 /* Keyboard inputs style - <kbd> tag */
 kbd {
@@ -196,6 +231,7 @@ kbd {
     inset 0px -3px 0px 0px rgb(0 0 0 / 10%);
   border-radius: 4px;
   padding: 0.2em 0.45em;
+  margin-right: 0.1em;
 
   .dark & {
     background: var(--bg0);
@@ -212,7 +248,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Avenir Next Condensed";
+  font-family: map.get($settings, font-heading);
   font-weight: 500 !important;
   text-wrap: pretty; /* Not yet supported in the Electron version Mochi is using */
 }
@@ -249,10 +285,7 @@ $heading-colors: map.get($settings, heading-colors);
   }
 }
 
-
-/* ------------------------------------------- */
 /* ------------------ Tables ------------------*/
-/* ------------------------------------------- */
 
 table {
   border-radius: 5px;
@@ -265,4 +298,54 @@ thead tr {
 
 tbody tr:nth-child(odd) {
   background-color: var(--bg2);
+}
+
+/* ------------------- Lists -------------------*/
+
+ol > li,
+ul > li {
+  position: relative;
+}
+
+ol > li {
+  list-style-type: none;
+}
+
+ol > li::before {
+  --bullet-size: calc(1.5 * 1rem);
+  --sl-text-xs: 0.8125rem;
+  --sl-color-white: var(--fg);
+  --sl-color-gray-6: var(--bg2);
+  --sl-color-gray-5: var(--bg4);
+  content: counter(list-item);
+  position: absolute;
+  top: 0.4em;
+  inset-inline-start: calc(-1.4 * var(--bullet-size));
+  width: var(--bullet-size);
+  height: var(--bullet-size);
+  line-height: var(--bullet-size);
+  font-size: var(--sl-text-xs);
+  font-weight: 600;
+  text-align: center;
+  color: var(--sl-color-white);
+  background-color: var(--sl-color-gray-6);
+  border-radius: 99rem;
+  box-shadow: inset 0 0 0 1px var(--sl-color-gray-5);
+  font-family: Cascadia Code;
+}
+
+/* Indent lines */
+ol > li::after,
+ul > li::after {
+  content: "";
+  position: absolute;
+  top: 35px;
+  bottom: 5px;
+  inset-inline-start: -22px;
+  width: 1px;
+  background-color: var(--bg4);
+}
+
+ul > li::after {
+  inset-inline-start: -15px;
 }
