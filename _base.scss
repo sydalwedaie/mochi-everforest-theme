@@ -131,7 +131,8 @@ html body {
     background: linear-gradient(0deg, var(--bg1), var(--bg1) 33px, transparent);
   }
 
-  .memo_views_card_list-view_card-container:hover & {
+  .memo_views_card_list-view_card-container:hover &,
+  .memo_views_card_grid-view_card-container:hover & {
     background: linear-gradient(
       0deg,
       var(--bg-green),
@@ -182,6 +183,11 @@ html body {
   @include btn-3d;
 }
 
+/* Grid view */
+.memo_views_card_grid-view_container {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
 /* -------------------------------------------- */
 /* ----------- memo_markdown edits ------------ */
 /* -------------------------------------------- */
@@ -194,7 +200,8 @@ html body {
 /* Tags - inline and in card status */
 .memo_markdown_components_tag-link {
   font-family: var(--fonts-monospace);
-  padding: 5px;
+  padding: 3px;
+  border: 1px solid var(--bg4);
 }
 
 /* Inline code style */
@@ -223,6 +230,10 @@ html body {
   /* Custome styles */
   background: var(--bg2);
   border: 1px solid var(--bg4);
+
+  .dark & {
+    background: var(--bg3);
+  }
 }
 
 /* Increase monospace font */
@@ -397,4 +408,22 @@ tbody tr:nth-child(even) {
   ul > li::after {
     inset-inline-start: -0.9rem;
   }
+}
+
+/* Experimental */
+hlr,
+hla {
+  font-family: var(--fonts-monospace);
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid;
+  background-color: var(--bg2);
+}
+
+hlr {
+  color: var(--red);
+}
+
+hla {
+  color: var(--orange);
 }
