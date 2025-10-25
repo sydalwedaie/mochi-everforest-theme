@@ -40,6 +40,9 @@ html.dark {
   --mochi--box-select--background-hover: var(--bg-blue);
   --mochi--side-bar-icon--color: var(--blue);
   --mochi--review-history--row-background-dark: var(--bg-dim);
+  --mochi--button-hover--background: var(--bg-blue);
+  --mochi----border-color: var(--bg3);
+  --mochi--side-bar-item-selected--background: var(--bg1);
 }
 
 html:not(.dark) {
@@ -78,16 +81,17 @@ html:not(.dark) {
   --mochi--side-bar--background: var(--bg3);
   --mochi--card--background-hover: var(--bg-green);
   --mochi--box-select--background: var(--bg2);
-  --mochi--box-select--background-hover: var(--bg-blue);
+  --mochi--box-select--background-hover: var(--bg5);
   --mochi--side-bar-icon--color: var(--grey2);
   --mochi--review-history--row-background-dark: var(--bg3);
+  --mochi--button-hover--background: var(--bg5);
+  --mochi--side-bar-item-selected--background: var(--bg5);
 }
 
 html body {
   --fonts-monospace: UbuntuMono Nerd Font Mono;
   --mochi--review-button--background: var(--mochi--side-bar--background);
   --mochi--card--color: var(--fg);
-  --mochi--button-hover--background: var(--bg-blue);
   --mochi--md-code--background: var(--bg2);
   --mochi--cloze-2--background-color: var(--mochi--side-bar--background);
   --mochi----background-color: var(--bg0);
@@ -96,7 +100,8 @@ html body {
   --mochi--show-more--background-hover: var(--bg5);
   --mochi--progressbar--foreground: var(--bg5);
   --mochi--inverted-button--background: var(--grey2);
-  --mochi--inverted-button--count-background: var(--grey1);
+  --mochi--inverted-button--count-background: var(--grey0);
+  --mochi--inverted-button-hover--background: var(--grey1);
   --mochi--progressbar--foreground-red: var(--statusline3);
   --mochi--re-review--icon: var(--red);
 }
@@ -116,7 +121,7 @@ html body {
   background-image: radial-gradient(circle, hsl(31, 27%, 25%) 1px, rgba(0, 0, 0, 0) 1px);
 }
 
-/* Fix dashbaord overview background incorrectly set to sidebar color. */
+/* Fix dashbaord overview background anomoly */
 .memo_views_pages_layout_frame-content > div:nth-child(3) {
   background-color: initial !important;
 }
@@ -137,8 +142,11 @@ html body {
 
 /* Editor background */
 .memo_views_modal_card_editor-background {
-  background-color: var(--bg0);
+  background-color: var(--bg1);
   font-size: 0.95em !important;
+}
+.dark .memo_views_modal_card_editor-background {
+  background-color: var(--bg0);
 }
 
 /* Cards font color */
@@ -176,6 +184,25 @@ html body {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
+/* Column view */
+.memo_views_card_column-view_left-column-container {
+  width: 330px;
+  border-left: none;
+}
+
+.memo_views_pages_deck_breadcrumbs-container {
+  border: none !important;
+}
+
+.memo_views_card_column-view_right-column-container {
+  color: var(--fg);
+}
+
+.memo_views_card_column-view_column-row-markdown-container h1, .memo_views_card_column-view_column-row-markdown-container h2, .memo_views_card_column-view_column-row-markdown-container h3, .memo_views_card_column-view_column-row-markdown-container h4 {
+  font-size: 1em !important;
+  font-weight: 600 !important;
+}
+
 /* -------------------------------------------- */
 /* ----------- memo_markdown edits ------------ */
 /* -------------------------------------------- */
@@ -206,15 +233,17 @@ html body {
   vertical-align: middle;
 }
 
+/* Reference card links */
 .memo_markdown_components_inline-link {
-  /* Make sure links wrap around */
-  white-space: normal;
   /* Custome styles */
   background: var(--bg2);
   border: 1px solid var(--bg4);
 }
 .dark .memo_markdown_components_inline-link {
   background: var(--bg3);
+}
+.dark .memo_markdown_components_inline-link:hover {
+  background: var(--bg4);
 }
 
 /* Increase monospace font */
@@ -311,10 +340,11 @@ h6 {
 kbd {
   font-family: var(--fonts-monospace);
   color: var(--statusline3) !important;
-  background: var(--bg1);
+  background: var(--bg2);
   border-radius: 4px;
   padding: 0.2em 0.45em;
   margin-right: 0.1em;
+  white-space: nowrap;
 }
 .dark kbd {
   background: var(--bg0);
