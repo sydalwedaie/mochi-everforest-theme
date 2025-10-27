@@ -49,7 +49,6 @@ html.dark {
   --mochi----border-color: var(--bg3);
 
   --mochi--side-bar-item-selected--background: var(--bg1);
-
 }
 
 html:not(.dark) {
@@ -217,6 +216,7 @@ html body {
 
 .memo_views_card_column-view_right-column-container {
   color: var(--fg);
+  background-color: var(--mochi--card--background);
 }
 
 .memo_views_card_column-view_column-row-markdown-container,
@@ -243,6 +243,7 @@ html body {
   // background-color: var(--mochi--side-bar--background);
   & > div + div {
     border: none;
+    margin-top: 0;
   }
 }
 
