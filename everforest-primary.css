@@ -104,6 +104,7 @@ html body {
   --mochi--inverted-button-hover--background: var(--grey1);
   --mochi--progressbar--foreground-red: var(--statusline3);
   --mochi--re-review--icon: var(--red);
+  --mochi--card--border-color-active: var(--bg5);
 }
 
 /* -------------------------------------------- */
@@ -203,11 +204,28 @@ html body {
   font-size: 1.1em !important;
   font-weight: 600 !important;
 }
-.memo_views_card_column-view_column-row-markdown-container h2, .memo_views_card_column-view_column-row-markdown-container h3, .memo_views_card_column-view_column-row-markdown-container h4,
+.memo_views_card_column-view_column-row-markdown-container h2,
+.memo_views_card_column-view_column-row-markdown-container h3,
+.memo_views_card_column-view_column-row-markdown-container h4,
 .memo_views_card_grid-view_card-container h2,
 .memo_views_card_grid-view_card-container h3,
 .memo_views_card_grid-view_card-container h4 {
   font-size: 1em !important;
+}
+
+/* Reset opacity of cards in column view */
+.memo_views_card_column-view_column-row-markdown-container .paragraph {
+  opacity: 1;
+}
+
+/* Remove divider lines in note footer in column view */
+.memo_views_molecules_card-info_content-wrapper > div + div {
+  border: none;
+}
+
+/* Remove box shadow */
+.memo_views_card_column-view_column-row-container {
+  box-shadow: none;
 }
 
 /* -------------------------------------------- */
@@ -222,7 +240,7 @@ html body {
 }
 
 /* Inline code style */
-.memo_markdown_styles_markdown-class code:not(pre code):not(kbd code) {
+code:not(pre code):not(kbd code) {
   color: var(--blue) !important;
   border: 1px solid;
   white-space: nowrap; /* prevent work break for inline code */
