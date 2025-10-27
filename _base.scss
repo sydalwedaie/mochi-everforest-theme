@@ -217,10 +217,15 @@ html body {
   color: var(--fg);
 }
 
-.memo_views_card_column-view_column-row-markdown-container {
-  h1, h2, h3, h4 {
-    font-size: 1em !important;
+.memo_views_card_column-view_column-row-markdown-container,
+.memo_views_card_grid-view_card-container {
+  h1 {
+    font-size: 1.1em !important;
     font-weight: 600 !important;
+  }
+
+  h2, h3, h4 {
+    font-size: 1em !important;
   }
 }
 
@@ -274,7 +279,6 @@ html body {
       background: var(--bg4);
     }
   }
-
 }
 
 /* Increase monospace font */
@@ -286,7 +290,7 @@ html body {
 
 /* Used for footnote legends */
 .memo_markdown_components_blue-link {
-  font-family: "Cascadia code";
+  // font-family: "Cascadia code";
   opacity: 0.9;
 
   h1 &,

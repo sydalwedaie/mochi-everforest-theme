@@ -198,9 +198,16 @@ html body {
   color: var(--fg);
 }
 
-.memo_views_card_column-view_column-row-markdown-container h1, .memo_views_card_column-view_column-row-markdown-container h2, .memo_views_card_column-view_column-row-markdown-container h3, .memo_views_card_column-view_column-row-markdown-container h4 {
-  font-size: 1em !important;
+.memo_views_card_column-view_column-row-markdown-container h1,
+.memo_views_card_grid-view_card-container h1 {
+  font-size: 1.1em !important;
   font-weight: 600 !important;
+}
+.memo_views_card_column-view_column-row-markdown-container h2, .memo_views_card_column-view_column-row-markdown-container h3, .memo_views_card_column-view_column-row-markdown-container h4,
+.memo_views_card_grid-view_card-container h2,
+.memo_views_card_grid-view_card-container h3,
+.memo_views_card_grid-view_card-container h4 {
+  font-size: 1em !important;
 }
 
 /* -------------------------------------------- */
@@ -255,7 +262,6 @@ html body {
 
 /* Used for footnote legends */
 .memo_markdown_components_blue-link {
-  font-family: "Cascadia code";
   opacity: 0.9;
 }
 h1 .memo_markdown_components_blue-link, h2 .memo_markdown_components_blue-link, h3 .memo_markdown_components_blue-link, h4 .memo_markdown_components_blue-link, h5 .memo_markdown_components_blue-link, h6 .memo_markdown_components_blue-link {
