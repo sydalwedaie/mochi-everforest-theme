@@ -208,6 +208,7 @@ html body {
 .memo_views_card_column-view_left-column-container {
   width: 330px;
   border-left: none;
+  border-right: none;
 }
 
 .memo_views_pages_deck_breadcrumbs-container {
@@ -217,6 +218,7 @@ html body {
 .memo_views_card_column-view_right-column-container {
   color: var(--fg);
   background-color: var(--mochi--card--background);
+  padding: 0; /* Remove the think border in editing mode */
 }
 
 .memo_views_card_column-view_column-row-markdown-container,
@@ -250,6 +252,20 @@ html body {
 /* Remove box shadow */
 .memo_views_card_column-view_column-row-container {
   box-shadow: none;
+}
+
+.memo_views_card_column-view_right-column-outer-container {
+  border-radius: 8px;
+  margin: 10px 10px 10px 0;
+  border: 1px solid var(--mochi----border-color);
+}
+
+.memo_views_card_column-view_editor-styles {
+  padding: 3em 3em 30vh 3em; /* Compensate for removing outer padding */
+}
+
+.memo_views_card_column-view_side-class {
+  padding: 3em; /* Match padding to editing mode */
 }
 
 /* -------------------------------------------- */
