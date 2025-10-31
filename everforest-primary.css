@@ -105,6 +105,7 @@ html body {
   --mochi--progressbar--foreground-red: var(--statusline3);
   --mochi--re-review--icon: var(--red);
   --mochi--card--border-color-active: var(--bg5);
+  --mochi--md-hr--border-small: 1px dashed var(--grey0);
 }
 
 /* -------------------------------------------- */
@@ -120,6 +121,14 @@ html body {
 .dark .memo_views_frame_frame-container {
   background-color: var(--bg0);
   background-image: radial-gradient(circle, hsl(31, 27%, 25%) 1px, rgba(0, 0, 0, 0) 1px);
+}
+
+/* Add bg to the top bar of main content to hide the dot pattern */
+.memo_views_pages_deck_breadcrumbs-container {
+  background-color: var(--bg1);
+}
+.dark .memo_views_pages_deck_breadcrumbs-container {
+  background-color: var(--bg0);
 }
 
 /* Fix dashbaord overview background anomoly */
@@ -243,7 +252,7 @@ html body {
 }
 
 .memo_views_card_column-view_side-class {
-  padding: 3em; /* Match padding to editing mode */
+  padding: 3em 3em 5em; /* Match padding to editing mode */
 }
 
 /* -------------------------------------------- */
@@ -329,7 +338,7 @@ h5,
 h6 {
   font-family: "Avenir Next Condensed";
   font-weight: 500 !important;
-  text-wrap: pretty; /* Not yet supported in the Electron version Mochi is using */
+  text-wrap: balance; /* Not yet supported in the Electron version Mochi is using */
 }
 
 /* Font size */
