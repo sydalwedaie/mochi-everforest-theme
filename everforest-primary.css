@@ -192,6 +192,10 @@ html body {
 /* Grid view */
 .memo_views_card_grid-view_container {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  /* Reset images with custom width */
+}
+.memo_views_card_grid-view_container img {
+  max-width: 100% !important;
 }
 
 /* Column view */
