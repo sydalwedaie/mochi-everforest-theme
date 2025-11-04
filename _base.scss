@@ -24,6 +24,10 @@
   }
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap');
+
 /* -------------------------------------------- */
 /* ---------------- Root styles --------------- */
 /* -------------------------------------------- */
@@ -483,7 +487,7 @@ tbody tr:nth-child(even) {
     background-color: var(--bg2);
     border-radius: 99rem;
     box-shadow: inset 0 0 0 1px var(--bg4);
-    font-family: Cascadia Code;
+    font-family: "Cascadia Code" !important;
 
     .dark & {
       background-color: var(--bg3);
