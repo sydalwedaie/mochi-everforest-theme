@@ -24,9 +24,9 @@
   }
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap");
 
 /* -------------------------------------------- */
 /* ---------------- Root styles --------------- */
@@ -298,7 +298,6 @@ html body {
 /* Tags - inline and in card status */
 .memo_markdown_components_tag-link {
   font-family: var(--fonts-monospace);
-  padding: 3px;
   border: 1px solid var(--bg4);
 }
 
@@ -311,14 +310,27 @@ code:not(pre code):not(kbd code) {
 }
 
 /* Highlighted text with == */
-.memo_markdown_styles_markdown-class mark {
-  border-radius: 0;
-  color: var(--bg0);
-  background-color: var(--aqua);
-  background-image: none;
-  padding: 0.2em;
-  margin: initial;
-  vertical-align: middle;
+.memo_markdown_styles_markdown-class {
+  mark {
+    border-radius: 0;
+    color: var(--bg0);
+    background-color: var(--aqua);
+    background-image: none;
+    padding: 0.2em;
+    margin: initial;
+    vertical-align: middle;
+  }
+  em mark {
+    background-color: var(--blue);
+  }
+
+  strong mark {
+    background-color: var(--yellow);
+  }
+
+  strong em mark {
+    background-color: var(--red);
+  }
 }
 
 /* Reference card links */

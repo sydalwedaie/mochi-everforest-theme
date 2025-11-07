@@ -268,7 +268,6 @@ html body {
 /* Tags - inline and in card status */
 .memo_markdown_components_tag-link {
   font-family: var(--fonts-monospace);
-  padding: 3px;
   border: 1px solid var(--bg4);
 }
 
@@ -289,6 +288,15 @@ code:not(pre code):not(kbd code) {
   padding: 0.2em;
   margin: initial;
   vertical-align: middle;
+}
+.memo_markdown_styles_markdown-class em mark {
+  background-color: var(--blue);
+}
+.memo_markdown_styles_markdown-class strong mark {
+  background-color: var(--yellow);
+}
+.memo_markdown_styles_markdown-class strong em mark {
+  background-color: var(--red);
 }
 
 /* Reference card links */
