@@ -291,12 +291,16 @@ code:not(pre code):not(kbd code) {
 }
 .memo_markdown_styles_markdown-class em mark {
   background-color: var(--blue);
+  font-style: normal;
 }
 .memo_markdown_styles_markdown-class strong mark {
   background-color: var(--yellow);
+  font-weight: normal;
 }
 .memo_markdown_styles_markdown-class strong em mark {
   background-color: var(--red);
+  font-style: normal;
+  font-weight: normal;
 }
 
 /* Reference card links */
@@ -487,7 +491,7 @@ ul > li::after {
 }
 
 ul > li::after {
-  inset-inline-start: -0.9rem;
+  inset-inline-start: -0.75rem;
 }
 
 /* Experimental */

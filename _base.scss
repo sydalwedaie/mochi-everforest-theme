@@ -322,14 +322,18 @@ code:not(pre code):not(kbd code) {
   }
   em mark {
     background-color: var(--blue);
+    font-style: normal;
   }
 
   strong mark {
     background-color: var(--yellow);
+    font-weight: normal;
   }
 
   strong em mark {
     background-color: var(--red);
+    font-style: normal;
+    font-weight: normal;
   }
 }
 
@@ -521,7 +525,7 @@ tbody tr:nth-child(even) {
   }
 
   ul > li::after {
-    inset-inline-start: -0.9rem;
+    inset-inline-start: -0.75rem;
   }
 }
 
