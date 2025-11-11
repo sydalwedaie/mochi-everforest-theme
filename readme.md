@@ -3,7 +3,7 @@
 
 A beautiful, customizable Everforest color scheme for the Mochi flashcard application. This theme provides carefully crafted dark and light modes with excellent readability and visual comfort. Some inspirations from the incredible Obsidian Primary theme.
 
-![](./mochi-everforest-demo.png)
+![](./mochi-everforest-theme-demo.png)
 
 ## Features
 
