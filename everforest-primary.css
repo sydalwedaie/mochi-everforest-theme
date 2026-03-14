@@ -279,6 +279,12 @@ code:not(pre code):not(kbd code) {
   margin-right: 0.1em; /* prevent trailing punctuations touching the border */
 }
 
+h1 code,
+h2 code,
+h3 code {
+  font-size: 0.8em !important;
+}
+
 /* Highlighted text with == */
 .memo_markdown_styles_markdown-class mark {
   border-radius: 0;
@@ -316,11 +322,16 @@ code:not(pre code):not(kbd code) {
   background: var(--bg4);
 }
 
+li:has(.memo_markdown_components_inline-link) {
+  /* Fix reference cards in lists having no margin between them */
+  line-height: 2;
+}
+
 /* Increase monospace font */
 /* Only for UbutntuMono Nerd Mono font because it's inherently smaller */
 .memo_markdown_styles_markdown-class code,
 .memo_markdown_styles_markdown-class pre {
-  font-size: 0.95em !important;
+  font-size: 0.95em;
 }
 
 /* Used for footnote legends */
@@ -329,6 +340,11 @@ code:not(pre code):not(kbd code) {
 }
 h1 .memo_markdown_components_blue-link, h2 .memo_markdown_components_blue-link, h3 .memo_markdown_components_blue-link, h4 .memo_markdown_components_blue-link, h5 .memo_markdown_components_blue-link, h6 .memo_markdown_components_blue-link {
   font-size: initial;
+}
+
+.memo_markdown_styles_markdown-class p,
+.memo_markdown_styles_markdown-class .paragraph {
+  text-wrap: pretty;
 }
 
 /* -------------------------------------------- */
