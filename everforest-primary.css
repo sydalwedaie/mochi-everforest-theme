@@ -265,6 +265,12 @@ html body {
 /* ----------- memo_markdown edits ------------ */
 /* -------------------------------------------- */
 /* Cards font family */
+.memo_markdown_styles_markdown-class ul,
+.memo_markdown_styles_markdown-class ol {
+  margin: 0;
+  line-height: 2;
+}
+
 /* Tags - inline and in card status */
 .memo_markdown_components_tag-link {
   font-family: var(--fonts-monospace);
@@ -320,11 +326,6 @@ h3 code {
 }
 .dark .memo_markdown_components_inline-link:hover {
   background: var(--bg4);
-}
-
-li:has(.memo_markdown_components_inline-link) {
-  /* Fix reference cards in lists having no margin between them */
-  line-height: 2;
 }
 
 /* Increase monospace font */

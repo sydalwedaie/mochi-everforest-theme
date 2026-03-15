@@ -292,7 +292,11 @@ html body {
 
 /* Cards font family */
 .memo_markdown_styles_markdown-class {
-  // font-family: Avenir !important;
+  ul,
+  ol {
+    margin: 0;
+    line-height: 2;
+  }
 }
 
 /* Tags - inline and in card status */
@@ -360,11 +364,6 @@ h3 {
       background: var(--bg4);
     }
   }
-}
-
-li:has(.memo_markdown_components_inline-link) {
-  /* Fix reference cards in lists having no margin between them */
-  line-height: 2;
 }
 
 /* Increase monospace font */
