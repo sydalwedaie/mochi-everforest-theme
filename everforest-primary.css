@@ -214,7 +214,8 @@ html body {
 .memo_views_card_column-view_right-column-container {
   color: var(--fg);
   background-color: var(--mochi--card--background);
-  padding: 0; /* Remove the think border in editing mode */
+  padding: 0;
+  /* Remove the think border in editing mode */
 }
 
 .memo_views_card_column-view_column-row-markdown-container h1,
@@ -254,11 +255,13 @@ html body {
 }
 
 .memo_views_card_column-view_editor-styles {
-  padding: 3em 3em 30vh 3em; /* Compensate for removing outer padding */
+  padding: 3em 3em 30vh 3em;
+  /* Compensate for removing outer padding */
 }
 
 .memo_views_card_column-view_side-class {
-  padding: 3em 3em 5em; /* Match padding to editing mode */
+  padding: 3em 3em 5em;
+  /* Match padding to editing mode */
 }
 
 /* -------------------------------------------- */
@@ -269,6 +272,55 @@ html body {
 .memo_markdown_styles_markdown-class ol {
   margin: 0;
   line-height: 2;
+}
+.memo_markdown_styles_markdown-class h1,
+.memo_markdown_styles_markdown-class h2,
+.memo_markdown_styles_markdown-class h3,
+.memo_markdown_styles_markdown-class h4,
+.memo_markdown_styles_markdown-class h5,
+.memo_markdown_styles_markdown-class h6 {
+  font-family: "Avenir Next Condensed";
+  line-height: 1.1;
+  text-wrap: balance;
+}
+.memo_markdown_styles_markdown-class {
+  /* Font size */
+}
+.memo_markdown_styles_markdown-class h2 {
+  font-size: 1.8em;
+}
+.memo_markdown_styles_markdown-class h3 {
+  font-size: 1.5em;
+}
+.memo_markdown_styles_markdown-class h4 {
+  font-size: 1.3em;
+}
+.memo_markdown_styles_markdown-class h5 {
+  font-size: 1em;
+}
+.memo_markdown_styles_markdown-class h6 {
+  font-size: 1em;
+}
+.memo_markdown_styles_markdown-class {
+  /* Rainbow headings */
+}
+.memo_markdown_styles_markdown-class h1 {
+  color: var(--fg);
+}
+.memo_markdown_styles_markdown-class h2 {
+  color: var(--red);
+}
+.memo_markdown_styles_markdown-class h3 {
+  color: var(--aqua);
+}
+.memo_markdown_styles_markdown-class h4 {
+  color: var(--orange);
+}
+.memo_markdown_styles_markdown-class h5 {
+  color: var(--blue);
+}
+.memo_markdown_styles_markdown-class h6 {
+  color: var(--yellow);
 }
 
 /* Tags - inline and in card status */
@@ -281,8 +333,10 @@ html body {
 code:not(pre code):not(kbd code) {
   color: var(--blue) !important;
   border: 1px solid;
-  white-space: nowrap; /* prevent work break for inline code */
-  margin-right: 0.1em; /* prevent trailing punctuations touching the border */
+  white-space: nowrap;
+  /* prevent work break for inline code */
+  margin-right: 0.1em;
+  /* prevent trailing punctuations touching the border */
 }
 
 h1 code,
@@ -335,6 +389,17 @@ h3 code {
   font-size: 0.95em;
 }
 
+/* Make the copy icon's position sticky */
+.memo_markdown_styles_markdown-class pre {
+  position: relative;
+  overflow-x: auto;
+}
+.memo_markdown_styles_markdown-class pre .copy-code-snippet {
+  position: sticky !important;
+  float: right;
+  left: calc(100% - 30px);
+}
+
 /* Used for footnote legends */
 .memo_markdown_components_blue-link {
   opacity: 0.9;
@@ -361,65 +426,6 @@ em {
 
 strong em {
   color: var(--purple);
-}
-
-/* ----------------- Headings ----------------- */
-/* General */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Avenir Next Condensed";
-  font-weight: 500 !important;
-  text-wrap: balance; /* Not yet supported in the Electron version Mochi is using */
-}
-
-/* Font size */
-h2 {
-  font-size: 1.8em !important;
-}
-
-h3 {
-  font-size: 1.5em !important;
-}
-
-h4 {
-  font-size: 1.3em !important;
-}
-
-h5 {
-  font-size: 1em !important;
-}
-
-h6 {
-  font-size: 1em !important;
-}
-
-/* Rainbow headings */
-h1 {
-  color: var(--fg);
-}
-
-h2 {
-  color: var(--red);
-}
-
-h3 {
-  color: var(--aqua);
-}
-
-h4 {
-  color: var(--orange);
-}
-
-h5 {
-  color: var(--blue);
-}
-
-h6 {
-  color: var(--yellow);
 }
 
 /* -------- Custom keyboard input style ------- */

@@ -7,6 +7,7 @@
   @each $key, $value in map.get($bg, $contrast) {
     --#{$key}: #{$value};
   }
+
   @each $key, $value in $fg {
     --#{$key}: #{$value};
   }
@@ -57,11 +58,9 @@ html.dark {
 
 html:not(.dark) {
   /* Everforest colors */
-  @include apply-colors(
-    $light-bg,
+  @include apply-colors($light-bg,
     $light-fg,
-    map.get($settings, contrast-light)
-  );
+    map.get($settings, contrast-light));
 
   /* Mochi variables */
   --mochi--card--background: var(--bg0);
@@ -119,32 +118,29 @@ html body {
   background-size: 50px 50px;
 
   /* Background pattern - dots */
-  background-image: radial-gradient(
-    circle,
-    hsla(37, 38%, 83%, 1) 1px,
-    rgba(0, 0, 0, 0) 1px
-  );
+  background-image: radial-gradient(circle,
+      hsla(37, 38%, 83%, 1) 1px,
+      rgba(0, 0, 0, 0) 1px);
 
   .dark & {
     background-color: var(--bg0);
-    background-image: radial-gradient(
-      circle,
-      hsla(31, 27%, 25%, 1) 1px,
-      rgba(0, 0, 0, 0) 1px
-    );
+    background-image: radial-gradient(circle,
+        hsla(31, 27%, 25%, 1) 1px,
+        rgba(0, 0, 0, 0) 1px);
   }
 }
 
 /* Add bg to the top bar of main content to hide the dot pattern */
 .memo_views_pages_deck_breadcrumbs-container {
   background-color: var(--bg1);
+
   .dark & {
     background-color: var(--bg0);
   }
 }
 
 /* Fix dashbaord overview background anomoly */
-.memo_views_pages_layout_frame-content > div:nth-child(3) {
+.memo_views_pages_layout_frame-content>div:nth-child(3) {
   background-color: initial !important;
 }
 
@@ -158,20 +154,16 @@ html body {
 
   .memo_views_card_list-view_card-container:hover &,
   .memo_views_card_grid-view_card-container:hover & {
-    background: linear-gradient(
-      0deg,
-      var(--bg-green),
-      var(--bg-green) 33px,
-      transparent
-    );
+    background: linear-gradient(0deg,
+        var(--bg-green),
+        var(--bg-green) 33px,
+        transparent);
 
     .dark & {
-      background: linear-gradient(
-        0deg,
-        var(--bg-blue),
-        var(--bg-blue) 33px,
-        transparent
-      );
+      background: linear-gradient(0deg,
+          var(--bg-blue),
+          var(--bg-blue) 33px,
+          transparent);
     }
   }
 }
@@ -236,7 +228,8 @@ html body {
 .memo_views_card_column-view_right-column-container {
   color: var(--fg);
   background-color: var(--mochi--card--background);
-  padding: 0; /* Remove the think border in editing mode */
+  padding: 0;
+  /* Remove the think border in editing mode */
 }
 
 .memo_views_card_column-view_column-row-markdown-container,
@@ -260,8 +253,9 @@ html body {
 
 /* Remove divider lines in note footer in column view */
 .memo_views_molecules_card-info_content-wrapper {
+
   // background-color: var(--mochi--side-bar--background);
-  & > div + div {
+  &>div+div {
     border: none;
     margin-top: 0;
   }
@@ -279,11 +273,13 @@ html body {
 }
 
 .memo_views_card_column-view_editor-styles {
-  padding: 3em 3em 30vh 3em; /* Compensate for removing outer padding */
+  padding: 3em 3em 30vh 3em;
+  /* Compensate for removing outer padding */
 }
 
 .memo_views_card_column-view_side-class {
-  padding: 3em 3em 5em; /* Match padding to editing mode */
+  padding: 3em 3em 5em;
+  /* Match padding to editing mode */
 }
 
 /* -------------------------------------------- */
@@ -292,10 +288,54 @@ html body {
 
 /* Cards font family */
 .memo_markdown_styles_markdown-class {
+
   ul,
   ol {
     margin: 0;
     line-height: 2;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: map.get($settings, font-heading);
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+
+  /* Font size */
+  h2 {
+    font-size: 1.8em;
+  }
+
+  h3 {
+    font-size: 1.5em;
+  }
+
+  h4 {
+    font-size: 1.3em;
+  }
+
+  h5 {
+    font-size: 1em;
+  }
+
+  h6 {
+    font-size: 1em;
+  }
+
+  @if map.get($settings, rainbow-headings) {
+    /* Rainbow headings */
+    $rainbow-colors: map.get($settings, rainbow-colors);
+
+    @for $i from 1 through list.length($rainbow-colors) {
+      h#{$i} {
+        color: var(--#{list.nth($rainbow-colors, $i)});
+      }
+    }
   }
 }
 
@@ -309,8 +349,10 @@ html body {
 code:not(pre code):not(kbd code) {
   color: var(--blue) !important;
   border: 1px solid;
-  white-space: nowrap; /* prevent work break for inline code */
-  margin-right: 0.1em; /* prevent trailing punctuations touching the border */
+  white-space: nowrap;
+  /* prevent work break for inline code */
+  margin-right: 0.1em;
+  /* prevent trailing punctuations touching the border */
 }
 
 h1,
@@ -332,6 +374,7 @@ h3 {
     margin: initial;
     vertical-align: middle;
   }
+
   em mark {
     background-color: var(--blue);
     font-style: normal;
@@ -373,6 +416,20 @@ h3 {
   font-size: 0.95em;
 }
 
+/* Make the copy icon's position sticky */
+.memo_markdown_styles_markdown-class pre {
+  position: relative;
+  overflow-x: auto;
+
+  .copy-code-snippet {
+    position: sticky !important;
+    float: right;
+    left: calc(100% - 30px);
+  }
+}
+
+
+
 /* Used for footnote legends */
 .memo_markdown_components_blue-link {
   // font-family: "Cascadia code";
@@ -409,50 +466,6 @@ strong em {
   color: var(--purple);
 }
 
-/* ----------------- Headings ----------------- */
-
-/* General */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: map.get($settings, font-heading);
-  font-weight: 500 !important;
-  text-wrap: balance; /* Not yet supported in the Electron version Mochi is using */
-}
-
-/* Font size */
-h2 {
-  font-size: 1.8em !important;
-}
-
-h3 {
-  font-size: 1.5em !important;
-}
-
-h4 {
-  font-size: 1.3em !important;
-}
-
-h5 {
-  font-size: 1em !important;
-}
-
-h6 {
-  font-size: 1em !important;
-}
-
-@if map.get($settings, rainbow-headings) {
-  /* Rainbow headings */
-  $rainbow-colors: map.get($settings, rainbow-colors);
-  @for $i from 1 through list.length($rainbow-colors) {
-    h#{$i} {
-      color: var(--#{list.nth($rainbow-colors, $i)});
-    }
-  }
-}
 
 /* -------- Custom keyboard input style ------- */
 
@@ -494,17 +507,18 @@ tbody tr:nth-child(even) {
 /* ------------ Custom list styles ------------ */
 
 @if map.get($settings, custom-ol-bullet) {
-  ol > li,
-  ul > li {
+
+  ol>li,
+  ul>li {
     position: relative;
   }
 
-  ol > li {
+  ol>li {
     list-style-type: none;
   }
 
   /* Custom numbered bullets */
-  ol > li::before {
+  ol>li::before {
     --bullet-size: 1.3rem;
     content: counter(list-item);
     position: absolute;
@@ -530,8 +544,8 @@ tbody tr:nth-child(even) {
   }
 
   /* Indent lines */
-  ol > li::after,
-  ul > li::after {
+  ol>li::after,
+  ul>li::after {
     content: "";
     position: absolute;
     top: 2rem;
@@ -541,7 +555,7 @@ tbody tr:nth-child(even) {
     background-color: var(--bg4);
   }
 
-  ul > li::after {
+  ul>li::after {
     inset-inline-start: -0.75rem;
   }
 }
