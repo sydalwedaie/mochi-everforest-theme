@@ -360,6 +360,8 @@ h2,
 h3 {
   code {
     font-size: 0.8em !important;
+    position: relative;
+    top: -0.15rem;
   }
 }
 
@@ -448,6 +450,15 @@ h3 {
 .memo_markdown_styles_markdown-class p,
 .memo_markdown_styles_markdown-class .paragraph {
   text-wrap: pretty;
+
+  &:has(img) {
+    overflow: unset;
+  }
+}
+
+.memo_markdown_styles_markdown-class img {
+  box-shadow: 0px 5px 17px 2px rgb(0 0 0 / 11%);
+  border-radius: 0.5rem;
 }
 
 /* -------------------------------------------- */
@@ -489,7 +500,10 @@ kbd {
 
 table {
   border-radius: 5px;
-  overflow: hidden;
+
+  /* Make wide tables scroll */
+  display: block;
+  overflow: auto;
 }
 
 thead tr {
@@ -522,7 +536,7 @@ tbody tr:nth-child(even) {
     --bullet-size: 1.3rem;
     content: counter(list-item);
     position: absolute;
-    top: 0.4rem;
+    top: 0.1rem;
     inset-inline-start: -1.7rem;
     width: var(--bullet-size);
     height: var(--bullet-size);
