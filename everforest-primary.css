@@ -270,7 +270,6 @@ html body {
 /* Cards font family */
 .memo_markdown_styles_markdown-class ul,
 .memo_markdown_styles_markdown-class ol {
-  margin: 0;
   line-height: 2;
 }
 .memo_markdown_styles_markdown-class h1,
@@ -402,9 +401,10 @@ h3 code {
   left: calc(100% - 30px);
 }
 
-/* Used for footnote legends */
+/* Also used for footnote legends */
 .memo_markdown_components_blue-link {
-  opacity: 0.9;
+  color: var(--blue);
+  font-weight: initial;
 }
 h1 .memo_markdown_components_blue-link, h2 .memo_markdown_components_blue-link, h3 .memo_markdown_components_blue-link, h4 .memo_markdown_components_blue-link, h5 .memo_markdown_components_blue-link, h6 .memo_markdown_components_blue-link {
   font-size: initial;
@@ -416,6 +416,7 @@ h1 .memo_markdown_components_blue-link, h2 .memo_markdown_components_blue-link, 
 }
 .memo_markdown_styles_markdown-class p:has(img),
 .memo_markdown_styles_markdown-class .paragraph:has(img) {
+  /* Allow box shadow on images to take effect */
   overflow: unset;
 }
 

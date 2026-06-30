@@ -291,7 +291,6 @@ html body {
 
   ul,
   ol {
-    margin: 0;
     line-height: 2;
   }
 
@@ -430,12 +429,10 @@ h3 {
   }
 }
 
-
-
-/* Used for footnote legends */
+/* Also used for footnote legends */
 .memo_markdown_components_blue-link {
-  // font-family: "Cascadia code";
-  opacity: 0.9;
+  color: var(--blue);
+  font-weight: initial;
 
   h1 &,
   h2 &,
@@ -452,6 +449,7 @@ h3 {
   text-wrap: pretty;
 
   &:has(img) {
+    /* Allow box shadow on images to take effect */
     overflow: unset;
   }
 }
