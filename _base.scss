@@ -502,6 +502,8 @@ table {
   /* Make wide tables scroll */
   display: block;
   overflow: auto;
+  /* fix smaller tables */
+  max-width: fit-content;
 }
 
 thead tr {
