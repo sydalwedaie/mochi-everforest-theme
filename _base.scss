@@ -54,6 +54,7 @@ html.dark {
   --mochi----border-color: var(--bg3);
 
   --mochi--side-bar-item-selected--background: var(--bg1);
+
 }
 
 html:not(.dark) {
@@ -102,6 +103,10 @@ html body {
 
   --mochi--progressbar--foreground-red: var(--statusline3);
   --mochi--re-review--icon: var(--red);
+
+
+  --mochi--banner--background-color: var(--fg);
+  --mochi--banner--color: var(--bg-dim);
 
   // --mochi--card-note-view--editor-background:
   --mochi--card--border-color-active: var(--bg5);
@@ -282,12 +287,23 @@ html body {
   /* Match padding to editing mode */
 }
 
+/* Notebook view */
+.memo_views_card_note-view_cards-list-container {
+  max-width: 45rem;
+
+  .memo_views_card_note-view_side-class {
+    padding: 2em 3em 2.5em !important
+  }
+}
+
 /* -------------------------------------------- */
 /* ----------- memo_markdown edits ------------ */
 /* -------------------------------------------- */
 
 /* Cards font family */
-.memo_markdown_styles_markdown-class {
+.memo_markdown_styles_markdown-class,
+.memo_markdown_styles_markdown-column-class,
+.memo_views_card_note-view_card-box-note-container {
 
   ul,
   ol {
@@ -362,6 +378,10 @@ h3 {
     position: relative;
     top: -0.15rem;
   }
+}
+
+blockquote code {
+  opacity: 0.8;
 }
 
 /* Highlighted text with == */
@@ -448,9 +468,10 @@ h3 {
 .memo_markdown_styles_markdown-class .paragraph {
   text-wrap: pretty;
 
-  &:has(img) {
+  &:has(img),
+  &:has(.memo_markdown_components_inline-link) {
     /* Allow box shadow on images to take effect */
-    overflow: unset;
+    overflow: initial;
   }
 }
 
@@ -468,7 +489,7 @@ strong {
 }
 
 em {
-  color: var(--aqua);
+  color: var(--purple);
 }
 
 strong em {

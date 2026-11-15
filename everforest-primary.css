@@ -106,6 +106,8 @@ html body {
   --mochi--inverted-button-hover--background: var(--grey1);
   --mochi--progressbar--foreground-red: var(--statusline3);
   --mochi--re-review--icon: var(--red);
+  --mochi--banner--background-color: var(--fg);
+  --mochi--banner--color: var(--bg-dim);
   --mochi--card--border-color-active: var(--bg5);
   --mochi--md-hr--border-small: 1px dashed var(--grey0);
 }
@@ -264,12 +266,24 @@ html body {
   /* Match padding to editing mode */
 }
 
+/* Notebook view */
+.memo_views_card_note-view_cards-list-container {
+  max-width: 45rem;
+}
+.memo_views_card_note-view_cards-list-container .memo_views_card_note-view_side-class {
+  padding: 2em 3em 2.5em !important;
+}
+
 /* -------------------------------------------- */
 /* ----------- memo_markdown edits ------------ */
 /* -------------------------------------------- */
 /* Cards font family */
 .memo_markdown_styles_markdown-class ul,
-.memo_markdown_styles_markdown-class ol {
+.memo_markdown_styles_markdown-class ol,
+.memo_markdown_styles_markdown-column-class ul,
+.memo_markdown_styles_markdown-column-class ol,
+.memo_views_card_note-view_card-box-note-container ul,
+.memo_views_card_note-view_card-box-note-container ol {
   line-height: 2;
 }
 .memo_markdown_styles_markdown-class h1,
@@ -277,48 +291,86 @@ html body {
 .memo_markdown_styles_markdown-class h3,
 .memo_markdown_styles_markdown-class h4,
 .memo_markdown_styles_markdown-class h5,
-.memo_markdown_styles_markdown-class h6 {
+.memo_markdown_styles_markdown-class h6,
+.memo_markdown_styles_markdown-column-class h1,
+.memo_markdown_styles_markdown-column-class h2,
+.memo_markdown_styles_markdown-column-class h3,
+.memo_markdown_styles_markdown-column-class h4,
+.memo_markdown_styles_markdown-column-class h5,
+.memo_markdown_styles_markdown-column-class h6,
+.memo_views_card_note-view_card-box-note-container h1,
+.memo_views_card_note-view_card-box-note-container h2,
+.memo_views_card_note-view_card-box-note-container h3,
+.memo_views_card_note-view_card-box-note-container h4,
+.memo_views_card_note-view_card-box-note-container h5,
+.memo_views_card_note-view_card-box-note-container h6 {
   font-family: "Avenir Next Condensed";
   line-height: 1.1;
   text-wrap: balance;
 }
-.memo_markdown_styles_markdown-class {
+.memo_markdown_styles_markdown-class,
+.memo_markdown_styles_markdown-column-class,
+.memo_views_card_note-view_card-box-note-container {
   /* Font size */
 }
-.memo_markdown_styles_markdown-class h2 {
+.memo_markdown_styles_markdown-class h2,
+.memo_markdown_styles_markdown-column-class h2,
+.memo_views_card_note-view_card-box-note-container h2 {
   font-size: 1.8em;
 }
-.memo_markdown_styles_markdown-class h3 {
+.memo_markdown_styles_markdown-class h3,
+.memo_markdown_styles_markdown-column-class h3,
+.memo_views_card_note-view_card-box-note-container h3 {
   font-size: 1.5em;
 }
-.memo_markdown_styles_markdown-class h4 {
+.memo_markdown_styles_markdown-class h4,
+.memo_markdown_styles_markdown-column-class h4,
+.memo_views_card_note-view_card-box-note-container h4 {
   font-size: 1.3em;
 }
-.memo_markdown_styles_markdown-class h5 {
+.memo_markdown_styles_markdown-class h5,
+.memo_markdown_styles_markdown-column-class h5,
+.memo_views_card_note-view_card-box-note-container h5 {
   font-size: 1em;
 }
-.memo_markdown_styles_markdown-class h6 {
+.memo_markdown_styles_markdown-class h6,
+.memo_markdown_styles_markdown-column-class h6,
+.memo_views_card_note-view_card-box-note-container h6 {
   font-size: 1em;
 }
-.memo_markdown_styles_markdown-class {
+.memo_markdown_styles_markdown-class,
+.memo_markdown_styles_markdown-column-class,
+.memo_views_card_note-view_card-box-note-container {
   /* Rainbow headings */
 }
-.memo_markdown_styles_markdown-class h1 {
+.memo_markdown_styles_markdown-class h1,
+.memo_markdown_styles_markdown-column-class h1,
+.memo_views_card_note-view_card-box-note-container h1 {
   color: var(--fg);
 }
-.memo_markdown_styles_markdown-class h2 {
-  color: var(--red);
-}
-.memo_markdown_styles_markdown-class h3 {
+.memo_markdown_styles_markdown-class h2,
+.memo_markdown_styles_markdown-column-class h2,
+.memo_views_card_note-view_card-box-note-container h2 {
   color: var(--aqua);
 }
-.memo_markdown_styles_markdown-class h4 {
-  color: var(--orange);
-}
-.memo_markdown_styles_markdown-class h5 {
+.memo_markdown_styles_markdown-class h3,
+.memo_markdown_styles_markdown-column-class h3,
+.memo_views_card_note-view_card-box-note-container h3 {
   color: var(--blue);
 }
-.memo_markdown_styles_markdown-class h6 {
+.memo_markdown_styles_markdown-class h4,
+.memo_markdown_styles_markdown-column-class h4,
+.memo_views_card_note-view_card-box-note-container h4 {
+  color: var(--orange);
+}
+.memo_markdown_styles_markdown-class h5,
+.memo_markdown_styles_markdown-column-class h5,
+.memo_views_card_note-view_card-box-note-container h5 {
+  color: var(--red);
+}
+.memo_markdown_styles_markdown-class h6,
+.memo_markdown_styles_markdown-column-class h6,
+.memo_views_card_note-view_card-box-note-container h6 {
   color: var(--yellow);
 }
 
@@ -344,6 +396,10 @@ h3 code {
   font-size: 0.8em !important;
   position: relative;
   top: -0.15rem;
+}
+
+blockquote code {
+  opacity: 0.8;
 }
 
 /* Highlighted text with == */
@@ -414,10 +470,11 @@ h1 .memo_markdown_components_blue-link, h2 .memo_markdown_components_blue-link, 
 .memo_markdown_styles_markdown-class .paragraph {
   text-wrap: pretty;
 }
-.memo_markdown_styles_markdown-class p:has(img),
-.memo_markdown_styles_markdown-class .paragraph:has(img) {
+.memo_markdown_styles_markdown-class p:has(img), .memo_markdown_styles_markdown-class p:has(.memo_markdown_components_inline-link),
+.memo_markdown_styles_markdown-class .paragraph:has(img),
+.memo_markdown_styles_markdown-class .paragraph:has(.memo_markdown_components_inline-link) {
   /* Allow box shadow on images to take effect */
-  overflow: unset;
+  overflow: initial;
 }
 
 .memo_markdown_styles_markdown-class img {
@@ -433,7 +490,7 @@ strong {
 }
 
 em {
-  color: var(--aqua);
+  color: var(--purple);
 }
 
 strong em {
