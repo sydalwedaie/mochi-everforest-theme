@@ -68,7 +68,7 @@ html:not(.dark) {
   --mochi--card-box--background: var(--bg0);
   --mochi--button--background: var(--bg0);
   --mochi--side-bar--background: var(--bg3);
-  --mochi--card--background-hover: var(--bg-green);
+  --mochi--card--background-hover: color-mix(in srgb, var(--bg-green), white 25%);
 
   --mochi--box-select--background: var(--bg2);
   --mochi--box-select--background-hover: var(--bg5);
@@ -160,8 +160,8 @@ html body {
   .memo_views_card_list-view_card-container:hover &,
   .memo_views_card_grid-view_card-container:hover & {
     background: linear-gradient(0deg,
-        var(--bg-green),
-        var(--bg-green) 33px,
+        color-mix(in srgb, var(--bg-green), white 25%),
+        color-mix(in srgb, var(--bg-green), white 25%) 33px,
         transparent);
 
     .dark & {

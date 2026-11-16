@@ -81,7 +81,7 @@ html:not(.dark) {
   --mochi--card-box--background: var(--bg0);
   --mochi--button--background: var(--bg0);
   --mochi--side-bar--background: var(--bg3);
-  --mochi--card--background-hover: var(--bg-green);
+  --mochi--card--background-hover: color-mix(in srgb, var(--bg-green), white 25%);
   --mochi--box-select--background: var(--bg2);
   --mochi--box-select--background-hover: var(--bg5);
   --mochi--side-bar-icon--color: var(--grey2);
@@ -148,7 +148,7 @@ html body {
   background: linear-gradient(0deg, var(--bg1), var(--bg1) 33px, transparent);
 }
 .memo_views_card_list-view_card-container:hover .memo_views_atoms_card_tile-fade, .memo_views_card_grid-view_card-container:hover .memo_views_atoms_card_tile-fade {
-  background: linear-gradient(0deg, var(--bg-green), var(--bg-green) 33px, transparent);
+  background: linear-gradient(0deg, color-mix(in srgb, var(--bg-green), white 25%), color-mix(in srgb, var(--bg-green), white 25%) 33px, transparent);
 }
 .dark .memo_views_card_list-view_card-container:hover .memo_views_atoms_card_tile-fade, .dark .memo_views_card_grid-view_card-container:hover .memo_views_atoms_card_tile-fade {
   background: linear-gradient(0deg, var(--bg-blue), var(--bg-blue) 33px, transparent);
