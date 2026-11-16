@@ -106,7 +106,7 @@ html body {
   --mochi--inverted-button-hover--background: var(--grey1);
   --mochi--progressbar--foreground-red: var(--statusline3);
   --mochi--re-review--icon: var(--red);
-  --mochi--banner--background-color: var(--fg);
+  --mochi--banner--background-color: color-mix(in srgb, black, var(--fg) 80%);
   --mochi--banner--color: var(--bg-dim);
   --mochi--card--border-color-active: var(--bg5);
   --mochi--md-hr--border-small: 1px dashed var(--grey0);

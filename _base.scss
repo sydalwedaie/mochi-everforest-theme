@@ -105,7 +105,7 @@ html body {
   --mochi--re-review--icon: var(--red);
 
 
-  --mochi--banner--background-color: var(--fg);
+  --mochi--banner--background-color: color-mix(in srgb, black, var(--fg) 80%);
   --mochi--banner--color: var(--bg-dim);
 
   // --mochi--card-note-view--editor-background:
