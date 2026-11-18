@@ -1,53 +1,47 @@
+<div align="center">
+
+![](./docs/mochi-everforest-theme.png)
+
 # Everforest Theme for the Mochi.cards App
 
-A beautiful, customizable Everforest color scheme for the Mochi flashcard application. This theme provides carefully crafted dark and light modes with excellent readability and visual comfort. Some inspirations from the incredible Obsidian Primary theme.
+A beautiful, customizable [Everforest](https://github.com/sainnhe/everforest) color scheme for the [Mochi](https://mochi.cards) flashcard application. This theme provides custom dark and light modes for excellent readability and visual comfort.
 
-![](./mochi-everforest-theme.png)
+<a href="https://buymeacoffee.com/sydalwedaie">![Buy me a coffee badge](https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black) </a>
+</div>
 
 ## Features
 
-### Core Features
-- **Dual Mode Support**: Seamless dark and light theme variants in one file.
-- **Contrast Options**: Three contrast levels (hard, medium, soft) for both dark and light modes (default medium dark, hard light).
-- **Rainbow Headings**: Optional colorful heading styles (H1-H6).
-- **Custom list styles**: Optional custome numbered bullets and indent lines.
-- **Syntax Highlighting**: Custom code block styling with language-specific syntax colors
-- **Enhanced Typography**: Custom font family and styles for standard and extended markdown syntax.
-
-### UI Enhancements
-- Styled inline code blocks with blue accents and borders
-- Custom keyboard input (`<kbd>`) styling with 3D effect
-- Highlighted text (markdown `==text==`) with yellow background
-- Enhanced table styling with alternating row colors
-- Smooth scrolling for footnote navigation
-- Improved tag display with monospace fonts
+- Seamless dark and light theme variants in one file.
+- Three contrast levels (hard, medium, soft) for both dark and light modes (default medium dark, hard light).
+- Optional colorful heading styles (H1-H6).
+- Optional custome numbered bullets and indent lines.
+- Custom font family and styles for standard and extended markdown syntax.
+- Custom inline code blocks.
+- Custom keyboard input (`<kbd>`) styling.
+- Multi-color highlighted text (`==text==`).
+- Enhanced table styling with alternating row colors.
+- Opinionated layout fixes for the Grid and Column views.
 
 ## Installation
 
-1. Copy the compiled CSS file to your Mochi custom CSS location:
-   - Navigate to Mochi's settings
-   - Find the Custom CSS theme option
-   - Import `everforest-primary.css`
+Copy the compiled CSS file to your Mochi custom CSS location:
+
+- Navigate to Mochi's settings
+- Find the Custom CSS theme option
+- Import `everforest-primary.css`
 
 > Note: You need to redo the above steps every time you update the theme file!
-
-2. Alternatively, if you want to customize the theme, use the SCSS source files (see Customization section below)
-
-
-## How to Use
 
 Once installed, the theme automatically adapts to your Mochi dark/light mode setting:
 
 - **Dark Mode**: Activates when Mochi is set to dark theme
 - **Light Mode**: Activates when Mochi is set to light theme
 
-No additional configuration is needed for basic usage.
+No additional configuration is needed for basic usage. If you want to customize the theme, use the SCSS source files (see Customization section below)
 
-## Customization
+## Customize Using SCSS
 
-### Using SCSS (Recommended for Customization)
-
-The theme is built with SCSS and offers extensive customization options:
+The theme is built with SCSS and offers a few customization options:
 
 1. **Prerequisites**: [Install SASS](https://sass-lang.com/install)
 2. **Edit Settings**: Open `_settings.scss` and modify as desired:
@@ -57,31 +51,29 @@ The theme is built with SCSS and offers extensive customization options:
 sass --watch everforest-primary.scss everforest-primary.css
 ```
 
-### Customization Options
+## Customization Options
 
-#### Contrast Levels
+### Contrast Levels
+
 - **Hard**: Maximum contrast between background and foreground (default for light mode)
 - **Medium**: Balanced contrast (default for dark mode)
 - **Soft**: Lower contrast for reduced eye strain
 
-#### Rainbow Headings
-Enable or disable colorful heading styles by setting `rainbow-headings` to `true` or `false`. When enabled, you can customize which color is applied to each heading level (H1-H6) using the `rainbow-colors` list.
+### Rainbow Headings
+
+Enable or disable colorful heading styles by setting `custom-rainbow-headings` to `true` or `false`. When enabled, you can customize which color is applied to each heading level (H1-H6) using the `rainbow-colors` list.
 
 Available colors: `red`, `orange`, `yellow`, `green`, `aqua`, `blue`, `purple`
 
 > Note: The default for H1 heading is foreground color.
 
+### Custom Components
 
-### File Structure
-
-```
-├── _base.scss                    # Main theme logic and Mochi-specific styles
-├── _colors.scss                  # Everforest color palette definitions
-├── _syntax-highlighting.scss     # Code syntax highlighting styles
-├── _settings.scss                # Custom settings options
-├── everforest-primary.scss       # Main entry point
-└── everforest-primary.css        # Compiled output (ready to use)
-```
+- `custom-button-3d` adds a 3D effect on some UI buttons.
+- `custom-assets-shadow` adds a subtle shadow arround images and videos, making them pop.
+- `custom-ol-bullet` adds rounded custom bullet numbers and indentation lines.
+- `custom-highlights` adds 4 different highlight options by mixing markdown's `==`, `_` and `**` syntax.
+- `custom-bg-pattern` adds a subtle background dot battern to the main content area.
 
 ## References
 
