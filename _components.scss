@@ -1,0 +1,210 @@
+@use "sass:map";
+@use "settings" as *;
+@use "tools" as *;
+
+/* -------------------------------------------- */
+/* ---------------- Components ---------------- */
+/* -------------------------------------------- */
+
+/* Main container */
+.memo_views_frame_frame-container {
+  background-color: var(--bg1);
+}
+
+/* Fix dashbaord overview background anomoly */
+.memo_views_pages_layout_frame-content>div:nth-child(3) {
+  background-color: initial !important;
+}
+
+/* 'Show More' gradient */
+.memo_views_card_list-view_card-container:hover,
+.memo_views_card_grid-view_card-container:hover {
+  --mochi--card--background-fade: linear-gradient(0deg,
+      var(--mochi--card--background-hover) 33px,
+      transparent);
+}
+
+/* Editor background */
+.memo_views_modal_card_editor-background {
+  background-color: var(--bg1);
+  font-size: 0.95em !important;
+
+  .dark & {
+    background-color: var(--bg0);
+  }
+}
+
+/* Cards font color */
+.memo_views_modal_modal-dialog {
+  color: var(--fg);
+}
+
+/* Cloze backgrounds */
+.memo_views_diagrams_diagram-cloze {
+  background-color: var(--grey1);
+}
+
+/* Column view */
+.memo_views_card_column-view_right-column-container {
+  color: var(--fg);
+  background-color: var(--mochi--card--background);
+}
+
+/* Tags - inline and in card status */
+.memo_markdown_components_tag-link {
+  font-family: var(--fonts-monospace);
+  border: 1px solid var(--bg4);
+}
+
+/* Reference card links */
+.memo_markdown_components_inline-link {
+  // white-space: normal;
+  background: var(--bg2);
+  border: 1px solid var(--bg4);
+
+  .dark & {
+    background: var(--bg3);
+
+    &:hover {
+      background: var(--bg4);
+    }
+  }
+}
+
+/* Tables */
+table {
+  border-radius: 5px;
+}
+
+thead tr {
+  background-color: var(--bg-green);
+}
+
+tbody tr:nth-child(odd) {
+  background-color: var(--bg2);
+}
+
+tbody tr:nth-child(even) {
+  background-color: var(--bg1);
+}
+
+/* ------------ Custom Styles ------------ */
+/* Make foot note jumps smooth */
+.memo_views_modal_modal-container {
+  scroll-behavior: smooth;
+}
+
+@if map.get($settings, custom-button-3d) {
+
+  /* 3D button effect */
+  .memo_views_atoms_button_default-button,
+  .memo_views_atoms_button_inverted-button {
+    @include btn-3d;
+  }
+}
+
+@if map.get($settings, custom-assets-shadow) {
+  /* Box shadow on card assets */
+
+  .memo_markdown_styles_markdown-class,
+  .memo_markdown_styles_markdown-column-class,
+  .memo_views_card_note-view_card-box-note-container {
+
+    p,
+    .paragraph {
+
+      &:has(img),
+      &:has(video),
+      &:has(.memo_markdown_components_inline-link) {
+        overflow: initial;
+      }
+    }
+
+    img,
+    video {
+      box-shadow: 0px 5px 17px 2px rgb(0 0 0 / 11%);
+      border-radius: 0.5rem;
+    }
+  }
+}
+
+@if map.get($settings, custom-ol-bullet) {
+  /* Custom numbered bullets */
+
+  ol>li,
+  ul>li {
+    position: relative;
+  }
+
+  ol>li {
+    list-style-type: none;
+  }
+
+  ol>li::before {
+    --bullet-size: 1.3rem;
+    content: counter(list-item);
+    position: absolute;
+    top: 0.1rem;
+    inset-inline-start: -1.7rem;
+    width: var(--bullet-size);
+    height: var(--bullet-size);
+    line-height: var(--bullet-size);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--fg);
+    background-color: var(--bg2);
+    border-radius: 99rem;
+    box-shadow: inset 0 0 0 1px var(--bg4);
+    font-family: "Cascadia Code" !important;
+
+    .dark & {
+      background-color: var(--bg3);
+      border-radius: 99rem;
+      box-shadow: inset 0 0 0 1px var(--bg5);
+    }
+  }
+
+  /* Indent lines */
+  ol>li::after,
+  ul>li::after {
+    content: "";
+    position: absolute;
+    top: 2rem;
+    bottom: 5px;
+    inset-inline-start: -1.1rem;
+    width: 1px;
+    background-color: var(--bg4);
+  }
+
+  ul>li::after {
+    inset-inline-start: -0.75rem;
+  }
+}
+
+@if map.get($settings, custom-bg-pattern) {
+
+  /* Background dots pattern */
+  .memo_views_frame_frame-container {
+    background-size: 50px 50px;
+    background-image: radial-gradient(circle,
+        hsla(37, 38%, 83%, 1) 1px,
+        rgba(0, 0, 0, 0) 1px);
+
+    .dark & {
+      background-color: var(--bg0);
+      background-image: radial-gradient(circle,
+          hsla(31, 27%, 25%, 1) 1px,
+          rgba(0, 0, 0, 0) 1px);
+    }
+  }
+
+  /* Add bg to the top bar of main content to hide the dot pattern */
+  .memo_views_pages_deck_breadcrumbs-container {
+    background-color: var(--bg1);
+
+    .dark & {
+      background-color: var(--bg0);
+    }
+  }
+}

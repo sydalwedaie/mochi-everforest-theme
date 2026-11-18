@@ -1,0 +1,29 @@
+/* -------------------------------------------- */
+/* ------------------ Fixes ------------------- */
+/* -------------------------------------------- */
+
+
+/* Make the copy icon's position sticky */
+.memo_markdown_styles_markdown-class pre {
+  position: relative;
+  overflow-x: auto;
+
+  .copy-code-snippet {
+    position: sticky !important;
+    float: right;
+    left: calc(100% - 30px);
+  }
+}
+
+/* Fix filter menu colors in dark mode */
+.dark .memo_views_atoms_menu_menu {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Make wide tables scroll */
+table {
+  display: block;
+  overflow: auto;
+  /* fix smaller tables */
+  max-width: fit-content;
+}

@@ -1,9 +1,17 @@
 $settings: (
   contrast-dark: "medium",
   contrast-light: "hard",
-  rainbow-headings: true,
-  rainbow-colors: (fg, aqua, blue, orange, red, yellow),
+
+  // Custom components
+  custom-button-3d: true,
+  custom-assets-shadow: true,
+  custom-ol-bullet: true,
+  custom-bg-pattern: true,
+
+  // Custom typography
   font-monospace: "Ubuntu Mono",
   font-heading: "Avenir Next Condensed",
-  custom-ol-bullet: true,
+  custom-rainbow-headings: true,
+  custom-rainbow-colors: (fg, aqua, blue, orange, red, yellow),
+  custom-highlights: true,
 );

@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap");
 /* -------------------------------------------- */
-/* ---------------- Root styles --------------- */
+/* ------------------- Base ------------------- */
 /* -------------------------------------------- */
 html.dark {
   /* Everforest colors */
@@ -38,6 +38,7 @@ html.dark {
   --mochi--button--background: var(--bg1);
   --mochi--side-bar--background: var(--bg-dim);
   --mochi--card--background-hover: var(--bg-blue);
+  --mochi--card--background-fade: linear-gradient(0deg, var(--bg1) 33px, transparent);
   --mochi--box-select--background: var(--bg0);
   --mochi--box-select--background-hover: var(--bg-blue);
   --mochi--side-bar-icon--color: var(--blue);
@@ -82,6 +83,7 @@ html:not(.dark) {
   --mochi--button--background: var(--bg0);
   --mochi--side-bar--background: var(--bg3);
   --mochi--card--background-hover: color-mix(in srgb, var(--bg-green), white 25%);
+  --mochi--card--background-fade: linear-gradient(0deg, var(--bg0) 33px, transparent);
   --mochi--box-select--background: var(--bg2);
   --mochi--box-select--background-hover: var(--bg5);
   --mochi--side-bar-icon--color: var(--grey2);
@@ -91,7 +93,6 @@ html:not(.dark) {
 }
 
 html body {
-  --fonts-monospace: Ubuntu Mono;
   --mochi--review-button--background: var(--mochi--side-bar--background);
   --mochi--card--color: var(--fg);
   --mochi--md-code--background: var(--bg2);
@@ -113,26 +114,11 @@ html body {
 }
 
 /* -------------------------------------------- */
-/* ------------- memo_views edits ------------- */
+/* ---------------- Components ---------------- */
 /* -------------------------------------------- */
-/* Main content background */
+/* Main container */
 .memo_views_frame_frame-container {
   background-color: var(--bg1);
-  background-size: 50px 50px;
-  /* Background pattern - dots */
-  background-image: radial-gradient(circle, hsl(37, 38%, 83%) 1px, rgba(0, 0, 0, 0) 1px);
-}
-.dark .memo_views_frame_frame-container {
-  background-color: var(--bg0);
-  background-image: radial-gradient(circle, hsl(31, 27%, 25%) 1px, rgba(0, 0, 0, 0) 1px);
-}
-
-/* Add bg to the top bar of main content to hide the dot pattern */
-.memo_views_pages_deck_breadcrumbs-container {
-  background-color: var(--bg1);
-}
-.dark .memo_views_pages_deck_breadcrumbs-container {
-  background-color: var(--bg0);
 }
 
 /* Fix dashbaord overview background anomoly */
@@ -140,18 +126,12 @@ html body {
   background-color: initial !important;
 }
 
-/* Show More gradient */
-.memo_views_atoms_card_tile-fade {
-  background: linear-gradient(0deg, var(--bg0), var(--bg0) 33px, transparent);
-}
-.dark .memo_views_atoms_card_tile-fade {
-  background: linear-gradient(0deg, var(--bg1), var(--bg1) 33px, transparent);
-}
-.memo_views_card_list-view_card-container:hover .memo_views_atoms_card_tile-fade, .memo_views_card_grid-view_card-container:hover .memo_views_atoms_card_tile-fade {
-  background: linear-gradient(0deg, color-mix(in srgb, var(--bg-green), white 25%), color-mix(in srgb, var(--bg-green), white 25%) 33px, transparent);
-}
-.dark .memo_views_card_list-view_card-container:hover .memo_views_atoms_card_tile-fade, .dark .memo_views_card_grid-view_card-container:hover .memo_views_atoms_card_tile-fade {
-  background: linear-gradient(0deg, var(--bg-blue), var(--bg-blue) 33px, transparent);
+/* 'Show More' gradient */
+.memo_views_card_list-view_card-container:hover,
+.memo_views_card_grid-view_card-container:hover {
+  --mochi--card--background-fade: linear-gradient(0deg,
+      var(--mochi--card--background-hover) 33px,
+      transparent);
 }
 
 /* Editor background */
@@ -168,16 +148,53 @@ html body {
   color: var(--fg);
 }
 
-/* Fix filter menu colors in dark mode */
-.dark .memo_views_atoms_menu_menu {
-  color: rgba(255, 255, 255, 0.7);
-}
-
 /* Cloze backgrounds */
 .memo_views_diagrams_diagram-cloze {
   background-color: var(--grey1);
 }
 
+/* Column view */
+.memo_views_card_column-view_right-column-container {
+  color: var(--fg);
+  background-color: var(--mochi--card--background);
+}
+
+/* Tags - inline and in card status */
+.memo_markdown_components_tag-link {
+  font-family: var(--fonts-monospace);
+  border: 1px solid var(--bg4);
+}
+
+/* Reference card links */
+.memo_markdown_components_inline-link {
+  background: var(--bg2);
+  border: 1px solid var(--bg4);
+}
+.dark .memo_markdown_components_inline-link {
+  background: var(--bg3);
+}
+.dark .memo_markdown_components_inline-link:hover {
+  background: var(--bg4);
+}
+
+/* Tables */
+table {
+  border-radius: 5px;
+}
+
+thead tr {
+  background-color: var(--bg-green);
+}
+
+tbody tr:nth-child(odd) {
+  background-color: var(--bg2);
+}
+
+tbody tr:nth-child(even) {
+  background-color: var(--bg1);
+}
+
+/* ------------ Custom Styles ------------ */
 /* Make foot note jumps smooth */
 .memo_views_modal_modal-container {
   scroll-behavior: smooth;
@@ -193,91 +210,135 @@ html body {
   box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.05), inset 0px -3px 0px 0px rgba(0, 0, 0, 0.25) !important;
 }
 
-/* Grid view */
-.memo_views_card_grid-view_container {
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  /* Reset images with custom width */
+/* Box shadow on card assets */
+.memo_markdown_styles_markdown-class p:has(img), .memo_markdown_styles_markdown-class p:has(video), .memo_markdown_styles_markdown-class p:has(.memo_markdown_components_inline-link),
+.memo_markdown_styles_markdown-class .paragraph:has(img),
+.memo_markdown_styles_markdown-class .paragraph:has(video),
+.memo_markdown_styles_markdown-class .paragraph:has(.memo_markdown_components_inline-link),
+.memo_markdown_styles_markdown-column-class p:has(img),
+.memo_markdown_styles_markdown-column-class p:has(video),
+.memo_markdown_styles_markdown-column-class p:has(.memo_markdown_components_inline-link),
+.memo_markdown_styles_markdown-column-class .paragraph:has(img),
+.memo_markdown_styles_markdown-column-class .paragraph:has(video),
+.memo_markdown_styles_markdown-column-class .paragraph:has(.memo_markdown_components_inline-link),
+.memo_views_card_note-view_card-box-note-container p:has(img),
+.memo_views_card_note-view_card-box-note-container p:has(video),
+.memo_views_card_note-view_card-box-note-container p:has(.memo_markdown_components_inline-link),
+.memo_views_card_note-view_card-box-note-container .paragraph:has(img),
+.memo_views_card_note-view_card-box-note-container .paragraph:has(video),
+.memo_views_card_note-view_card-box-note-container .paragraph:has(.memo_markdown_components_inline-link) {
+  overflow: initial;
 }
-.memo_views_card_grid-view_container img {
-  max-width: 100% !important;
+.memo_markdown_styles_markdown-class img,
+.memo_markdown_styles_markdown-class video,
+.memo_markdown_styles_markdown-column-class img,
+.memo_markdown_styles_markdown-column-class video,
+.memo_views_card_note-view_card-box-note-container img,
+.memo_views_card_note-view_card-box-note-container video {
+  box-shadow: 0px 5px 17px 2px rgba(0, 0, 0, 0.11);
+  border-radius: 0.5rem;
 }
 
-/* Column view */
-.memo_views_card_column-view_left-column-container {
-  width: 330px;
-  border-left: none;
-  border-right: none;
+/* Custom numbered bullets */
+ol > li,
+ul > li {
+  position: relative;
 }
 
-.memo_views_pages_deck_breadcrumbs-container {
-  border: none !important;
+ol > li {
+  list-style-type: none;
 }
 
-.memo_views_card_column-view_right-column-container {
+ol > li::before {
+  --bullet-size: 1.3rem;
+  content: counter(list-item);
+  position: absolute;
+  top: 0.1rem;
+  inset-inline-start: -1.7rem;
+  width: var(--bullet-size);
+  height: var(--bullet-size);
+  line-height: var(--bullet-size);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
   color: var(--fg);
-  background-color: var(--mochi--card--background);
-  padding: 0;
-  /* Remove the think border in editing mode */
+  background-color: var(--bg2);
+  border-radius: 99rem;
+  box-shadow: inset 0 0 0 1px var(--bg4);
+  font-family: "Cascadia Code" !important;
+}
+.dark ol > li::before {
+  background-color: var(--bg3);
+  border-radius: 99rem;
+  box-shadow: inset 0 0 0 1px var(--bg5);
 }
 
-.memo_views_card_column-view_column-row-markdown-container h1,
-.memo_views_card_grid-view_card-container h1 {
-  font-size: 1.1em !important;
-  font-weight: 600 !important;
-}
-.memo_views_card_column-view_column-row-markdown-container h2,
-.memo_views_card_column-view_column-row-markdown-container h3,
-.memo_views_card_column-view_column-row-markdown-container h4,
-.memo_views_card_grid-view_card-container h2,
-.memo_views_card_grid-view_card-container h3,
-.memo_views_card_grid-view_card-container h4 {
-  font-size: 1em !important;
+/* Indent lines */
+ol > li::after,
+ul > li::after {
+  content: "";
+  position: absolute;
+  top: 2rem;
+  bottom: 5px;
+  inset-inline-start: -1.1rem;
+  width: 1px;
+  background-color: var(--bg4);
 }
 
-/* Reset opacity of cards in column view */
-.memo_views_card_column-view_column-row-markdown-container .paragraph {
-  opacity: 1;
+ul > li::after {
+  inset-inline-start: -0.75rem;
 }
 
-/* Remove divider lines in note footer in column view */
-.memo_views_molecules_card-info_content-wrapper > div + div {
-  border: none;
-  margin-top: 0;
+/* Background dots pattern */
+.memo_views_frame_frame-container {
+  background-size: 50px 50px;
+  background-image: radial-gradient(circle, hsl(37, 38%, 83%) 1px, rgba(0, 0, 0, 0) 1px);
+}
+.dark .memo_views_frame_frame-container {
+  background-color: var(--bg0);
+  background-image: radial-gradient(circle, hsl(31, 27%, 25%) 1px, rgba(0, 0, 0, 0) 1px);
 }
 
-/* Remove box shadow */
-.memo_views_card_column-view_column-row-container {
-  box-shadow: none;
+/* Add bg to the top bar of main content to hide the dot pattern */
+.memo_views_pages_deck_breadcrumbs-container {
+  background-color: var(--bg1);
 }
-
-.memo_views_card_column-view_right-column-outer-container {
-  border-radius: 8px;
-  margin: 10px 10px 10px 0;
-  border: 1px solid var(--mochi----border-color);
-}
-
-.memo_views_card_column-view_editor-styles {
-  padding: 3em 3em 30vh 3em;
-  /* Compensate for removing outer padding */
-}
-
-.memo_views_card_column-view_side-class {
-  padding: 3em 3em 5em;
-  /* Match padding to editing mode */
-}
-
-/* Notebook view */
-.memo_views_card_note-view_cards-list-container {
-  max-width: 45rem;
-}
-.memo_views_card_note-view_cards-list-container .memo_views_card_note-view_side-class {
-  padding: 2em 3em 2.5em !important;
+.dark .memo_views_pages_deck_breadcrumbs-container {
+  background-color: var(--bg0);
 }
 
 /* -------------------------------------------- */
-/* ----------- memo_markdown edits ------------ */
+/* --------------- Typography ----------------- */
 /* -------------------------------------------- */
-/* Cards font family */
+/* Base */
+html body {
+  --fonts-monospace: Ubuntu Mono;
+}
+
+/* Note fonts */
+.memo_markdown_styles_markdown-class strong,
+.memo_markdown_styles_markdown-column-class strong,
+.memo_views_card_note-view_card-box-note-container strong {
+  color: var(--statusline3);
+}
+.memo_markdown_styles_markdown-class em,
+.memo_markdown_styles_markdown-column-class em,
+.memo_views_card_note-view_card-box-note-container em {
+  color: var(--purple);
+}
+.memo_markdown_styles_markdown-class strong em,
+.memo_markdown_styles_markdown-column-class strong em,
+.memo_views_card_note-view_card-box-note-container strong em {
+  color: var(--purple);
+}
+.memo_markdown_styles_markdown-class p,
+.memo_markdown_styles_markdown-class .paragraph,
+.memo_markdown_styles_markdown-column-class p,
+.memo_markdown_styles_markdown-column-class .paragraph,
+.memo_views_card_note-view_card-box-note-container p,
+.memo_views_card_note-view_card-box-note-container .paragraph {
+  text-wrap: pretty;
+}
 .memo_markdown_styles_markdown-class ul,
 .memo_markdown_styles_markdown-class ol,
 .memo_markdown_styles_markdown-column-class ul,
@@ -338,11 +399,48 @@ html body {
 .memo_views_card_note-view_card-box-note-container h6 {
   font-size: 1em;
 }
-.memo_markdown_styles_markdown-class,
-.memo_markdown_styles_markdown-column-class,
-.memo_views_card_note-view_card-box-note-container {
-  /* Rainbow headings */
+
+/* Links and footnote legends */
+.memo_markdown_components_blue-link {
+  color: var(--blue);
+  font-weight: initial;
 }
+h1 .memo_markdown_components_blue-link, h2 .memo_markdown_components_blue-link, h3 .memo_markdown_components_blue-link, h4 .memo_markdown_components_blue-link, h5 .memo_markdown_components_blue-link, h6 .memo_markdown_components_blue-link {
+  font-size: initial;
+}
+
+/* Inline code style */
+code:not(pre code):not(kbd code) {
+  color: var(--blue) !important;
+  border: 1px solid color-mix(in srgb, var(--blue), var(--bg0) 50%);
+  /* prevent work break for inline code */
+  white-space: nowrap;
+  /* prevent trailing punctuations touching the border */
+  margin-right: 0.1em;
+}
+
+h1 code,
+h2 code,
+h3 code {
+  font-size: 0.8em !important;
+  position: relative;
+  top: -0.15rem;
+}
+
+blockquote code {
+  opacity: 0.8;
+}
+
+/* Code blocks */
+.memo_markdown_styles_markdown-class code,
+.memo_markdown_styles_markdown-class pre {
+  /* Increase default monospace font */
+  /* Only for UbutntuMono because it's inherently a small font */
+  font-size: 0.95em;
+}
+
+/* -------------- Custom Styles --------------- */
+/* Rainbow headings */
 .memo_markdown_styles_markdown-class h1,
 .memo_markdown_styles_markdown-column-class h1,
 .memo_views_card_note-view_card-box-note-container h1 {
@@ -374,36 +472,10 @@ html body {
   color: var(--yellow);
 }
 
-/* Tags - inline and in card status */
-.memo_markdown_components_tag-link {
-  font-family: var(--fonts-monospace);
-  border: 1px solid var(--bg4);
-}
-
-/* Inline code style */
-code:not(pre code):not(kbd code) {
-  color: var(--blue) !important;
-  border: 1px solid color-mix(in srgb, var(--blue), var(--bg0) 50%);
-  white-space: nowrap;
-  /* prevent work break for inline code */
-  margin-right: 0.1em;
-  /* prevent trailing punctuations touching the border */
-}
-
-h1 code,
-h2 code,
-h3 code {
-  font-size: 0.8em !important;
-  position: relative;
-  top: -0.15rem;
-}
-
-blockquote code {
-  opacity: 0.8;
-}
-
-/* Highlighted text with == */
-.memo_markdown_styles_markdown-class mark {
+/* Custom Highlights */
+.memo_markdown_styles_markdown-note-class mark,
+.memo_markdown_styles_markdown-class mark,
+.memo_markdown_styles_markdown-column-class mark {
   border-radius: 0;
   color: var(--bg0);
   background-color: var(--aqua);
@@ -412,92 +484,27 @@ blockquote code {
   margin: initial;
   vertical-align: middle;
 }
-.memo_markdown_styles_markdown-class em mark {
+.memo_markdown_styles_markdown-note-class em mark,
+.memo_markdown_styles_markdown-class em mark,
+.memo_markdown_styles_markdown-column-class em mark {
   background-color: var(--blue);
   font-style: normal;
 }
-.memo_markdown_styles_markdown-class strong mark {
+.memo_markdown_styles_markdown-note-class strong mark,
+.memo_markdown_styles_markdown-class strong mark,
+.memo_markdown_styles_markdown-column-class strong mark {
   background-color: var(--yellow);
   font-weight: normal;
 }
-.memo_markdown_styles_markdown-class strong em mark {
+.memo_markdown_styles_markdown-note-class strong em mark,
+.memo_markdown_styles_markdown-class strong em mark,
+.memo_markdown_styles_markdown-column-class strong em mark {
   background-color: var(--red);
   font-style: normal;
   font-weight: normal;
 }
 
-/* Reference card links */
-.memo_markdown_components_inline-link {
-  /* Custome styles */
-  background: var(--bg2);
-  border: 1px solid var(--bg4);
-}
-.dark .memo_markdown_components_inline-link {
-  background: var(--bg3);
-}
-.dark .memo_markdown_components_inline-link:hover {
-  background: var(--bg4);
-}
-
-/* Increase monospace font */
-/* Only for UbutntuMono Nerd Mono font because it's inherently smaller */
-.memo_markdown_styles_markdown-class code,
-.memo_markdown_styles_markdown-class pre {
-  font-size: 0.95em;
-}
-
-/* Make the copy icon's position sticky */
-.memo_markdown_styles_markdown-class pre {
-  position: relative;
-  overflow-x: auto;
-}
-.memo_markdown_styles_markdown-class pre .copy-code-snippet {
-  position: sticky !important;
-  float: right;
-  left: calc(100% - 30px);
-}
-
-/* Also used for footnote legends */
-.memo_markdown_components_blue-link {
-  color: var(--blue);
-  font-weight: initial;
-}
-h1 .memo_markdown_components_blue-link, h2 .memo_markdown_components_blue-link, h3 .memo_markdown_components_blue-link, h4 .memo_markdown_components_blue-link, h5 .memo_markdown_components_blue-link, h6 .memo_markdown_components_blue-link {
-  font-size: initial;
-}
-
-.memo_markdown_styles_markdown-class p,
-.memo_markdown_styles_markdown-class .paragraph {
-  text-wrap: pretty;
-}
-.memo_markdown_styles_markdown-class p:has(img), .memo_markdown_styles_markdown-class p:has(.memo_markdown_components_inline-link),
-.memo_markdown_styles_markdown-class .paragraph:has(img),
-.memo_markdown_styles_markdown-class .paragraph:has(.memo_markdown_components_inline-link) {
-  /* Allow box shadow on images to take effect */
-  overflow: initial;
-}
-
-.memo_markdown_styles_markdown-class img {
-  box-shadow: 0px 5px 17px 2px rgba(0, 0, 0, 0.11);
-  border-radius: 0.5rem;
-}
-
-/* -------------------------------------------- */
-/* ----------- Raw HTML tags edits ------------ */
-/* -------------------------------------------- */
-strong {
-  color: var(--statusline3);
-}
-
-em {
-  color: var(--purple);
-}
-
-strong em {
-  color: var(--purple);
-}
-
-/* -------- Custom keyboard input style ------- */
+/* Custom kbd style */
 kbd {
   font-family: var(--fonts-monospace);
   color: var(--statusline3) !important;
@@ -517,95 +524,114 @@ kbd {
   box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.05), inset 0px -3px 0px 0px rgba(0, 0, 0, 0.25) !important;
 }
 
-/* ------------------ Tables ------------------ */
+/* -------------------------------------------- */
+/* --------- Opinionated Layout Fixes --------- */
+/* -------------------------------------------- */
+/* ---------------- Grid view ----------------- */
+.memo_views_card_grid-view_container {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  /* Reset images with custom width */
+}
+.memo_views_card_grid-view_container img {
+  max-width: 100% !important;
+}
+
+/* --------------- Column view ---------------- */
+.memo_views_card_column-view_left-column-container {
+  width: 330px;
+  border-left: none;
+  border-right: none;
+}
+
+.memo_views_pages_deck_breadcrumbs-container {
+  border: none !important;
+}
+
+/* Remove thick border in editing mode */
+.memo_views_card_column-view_right-column-container {
+  padding: 0;
+}
+
+/* Reset opacity of cards in column view */
+.memo_views_card_column-view_column-row-markdown-container .paragraph {
+  opacity: 1;
+}
+
+/* Remove divider lines in note footer in column view */
+.memo_views_molecules_card-info_content-wrapper > div + div {
+  border: none;
+  margin-top: 0;
+}
+
+/* Remove box shadow */
+.memo_views_card_column-view_column-row-container {
+  box-shadow: none;
+}
+
+.memo_views_card_column-view_right-column-outer-container {
+  border-radius: 8px;
+  margin: 10px 10px 10px 0;
+  border: 1px solid var(--mochi----border-color);
+}
+
+.memo_views_card_column-view_editor-styles {
+  padding: 3em 3em 30vh 3em;
+  /* Compensate for removing outer padding */
+}
+
+.memo_views_card_column-view_side-class {
+  padding: 3em 3em 5em;
+  /* Match padding to editing mode */
+}
+
+/* Reduce heading font sizes in column and grid views */
+.memo_views_card_column-view_column-row-markdown-container h1,
+.memo_views_card_grid-view_card-container h1 {
+  font-size: 1.1em !important;
+  font-weight: 600 !important;
+}
+.memo_views_card_column-view_column-row-markdown-container h2,
+.memo_views_card_column-view_column-row-markdown-container h3,
+.memo_views_card_column-view_column-row-markdown-container h4,
+.memo_views_card_grid-view_card-container h2,
+.memo_views_card_grid-view_card-container h3,
+.memo_views_card_grid-view_card-container h4 {
+  font-size: 1em !important;
+}
+
+/* -------------- Notebook view --------------- */
+.memo_views_card_note-view_cards-list-container {
+  max-width: 45rem;
+}
+.memo_views_card_note-view_cards-list-container .memo_views_card_note-view_side-class {
+  padding: 2em 3em 2.5em !important;
+}
+
+/* -------------------------------------------- */
+/* ------------------ Fixes ------------------- */
+/* -------------------------------------------- */
+/* Make the copy icon's position sticky */
+.memo_markdown_styles_markdown-class pre {
+  position: relative;
+  overflow-x: auto;
+}
+.memo_markdown_styles_markdown-class pre .copy-code-snippet {
+  position: sticky !important;
+  float: right;
+  left: calc(100% - 30px);
+}
+
+/* Fix filter menu colors in dark mode */
+.dark .memo_views_atoms_menu_menu {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Make wide tables scroll */
 table {
-  border-radius: 5px;
-  /* Make wide tables scroll */
   display: block;
   overflow: auto;
   /* fix smaller tables */
   max-width: fit-content;
-}
-
-thead tr {
-  background-color: var(--bg-green);
-}
-
-tbody tr:nth-child(odd) {
-  background-color: var(--bg2);
-}
-
-tbody tr:nth-child(even) {
-  background-color: var(--bg1);
-}
-
-/* ------------ Custom list styles ------------ */
-ol > li,
-ul > li {
-  position: relative;
-}
-
-ol > li {
-  list-style-type: none;
-}
-
-/* Custom numbered bullets */
-ol > li::before {
-  --bullet-size: 1.3rem;
-  content: counter(list-item);
-  position: absolute;
-  top: 0.1rem;
-  inset-inline-start: -1.7rem;
-  width: var(--bullet-size);
-  height: var(--bullet-size);
-  line-height: var(--bullet-size);
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-align: center;
-  color: var(--fg);
-  background-color: var(--bg2);
-  border-radius: 99rem;
-  box-shadow: inset 0 0 0 1px var(--bg4);
-  font-family: "Cascadia Code" !important;
-}
-.dark ol > li::before {
-  background-color: var(--bg3);
-  border-radius: 99rem;
-  box-shadow: inset 0 0 0 1px var(--bg5);
-}
-
-/* Indent lines */
-ol > li::after,
-ul > li::after {
-  content: "";
-  position: absolute;
-  top: 2rem;
-  bottom: 5px;
-  inset-inline-start: -1.1rem;
-  width: 1px;
-  background-color: var(--bg4);
-}
-
-ul > li::after {
-  inset-inline-start: -0.75rem;
-}
-
-/* Experimental */
-hlr,
-hla {
-  font-family: var(--fonts-monospace);
-  padding: 2px 6px;
-  border-radius: 3px;
-  border: 1px solid;
-  background-color: var(--bg2);
-}
-
-hlr {
-  color: var(--red);
-}
-
-hla {
-  color: var(--orange);
 }
 
 /* ------------------------------------------- */

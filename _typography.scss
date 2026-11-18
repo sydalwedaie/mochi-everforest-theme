@@ -1,0 +1,196 @@
+@use "settings" as *;
+@use "tools" as *;
+@use "sass:map";
+@use "sass:list";
+
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap");
+
+/* -------------------------------------------- */
+/* --------------- Typography ----------------- */
+/* -------------------------------------------- */
+
+/* Base */
+html body {
+  --fonts-monospace: #{map.get($settings, font-monospace)};
+}
+
+
+/* Note fonts */
+.memo_markdown_styles_markdown-class,
+.memo_markdown_styles_markdown-column-class,
+.memo_views_card_note-view_card-box-note-container {
+
+  strong {
+    color: var(--statusline3);
+  }
+
+  em {
+    color: var(--purple);
+  }
+
+  strong em {
+    color: var(--purple);
+  }
+
+  p,
+  .paragraph {
+    text-wrap: pretty;
+  }
+
+  ul,
+  ol {
+    line-height: 2;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: map.get($settings, font-heading);
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+
+  /* Font size */
+  h2 {
+    font-size: 1.8em;
+  }
+
+  h3 {
+    font-size: 1.5em;
+  }
+
+  h4 {
+    font-size: 1.3em;
+  }
+
+  h5 {
+    font-size: 1em;
+  }
+
+  h6 {
+    font-size: 1em;
+  }
+
+}
+
+/* Links and footnote legends */
+.memo_markdown_components_blue-link {
+  color: var(--blue);
+  font-weight: initial;
+
+  h1 &,
+  h2 &,
+  h3 &,
+  h4 &,
+  h5 &,
+  h6 & {
+    font-size: initial;
+  }
+}
+
+/* Inline code style */
+code:not(pre code):not(kbd code) {
+  color: var(--blue) !important;
+  border: 1px solid color-mix(in srgb, var(--blue), var(--bg0) 50%);
+  /* prevent work break for inline code */
+  white-space: nowrap;
+  /* prevent trailing punctuations touching the border */
+  margin-right: 0.1em;
+}
+
+h1,
+h2,
+h3 {
+  code {
+    font-size: 0.8em !important;
+    position: relative;
+    top: -0.15rem;
+  }
+}
+
+blockquote code {
+  opacity: 0.8;
+}
+
+/* Code blocks */
+.memo_markdown_styles_markdown-class code,
+.memo_markdown_styles_markdown-class pre {
+  /* Increase default monospace font */
+  /* Only for UbutntuMono because it's inherently a small font */
+  font-size: 0.95em;
+}
+
+
+/* -------------- Custom Styles --------------- */
+
+/* Rainbow headings */
+@if map.get($settings, custom-rainbow-headings) {
+
+  .memo_markdown_styles_markdown-class,
+  .memo_markdown_styles_markdown-column-class,
+  .memo_views_card_note-view_card-box-note-container {
+    $rainbow-colors: map.get($settings, custom-rainbow-colors);
+
+    @for $i from 1 through list.length($rainbow-colors) {
+      h#{$i} {
+        color: var(--#{list.nth($rainbow-colors, $i)});
+      }
+    }
+  }
+}
+
+/* Custom Highlights */
+@if map.get($settings, custom-highlights) {
+
+  .memo_markdown_styles_markdown-note-class,
+  .memo_markdown_styles_markdown-class,
+  .memo_markdown_styles_markdown-column-class {
+    mark {
+      border-radius: 0;
+      color: var(--bg0);
+      background-color: var(--aqua);
+      background-image: none;
+      padding: 0.2em;
+      margin: initial;
+      vertical-align: middle;
+    }
+
+    em mark {
+      background-color: var(--blue);
+      font-style: normal;
+    }
+
+    strong mark {
+      background-color: var(--yellow);
+      font-weight: normal;
+    }
+
+    strong em mark {
+      background-color: var(--red);
+      font-style: normal;
+      font-weight: normal;
+    }
+  }
+}
+
+
+/* Custom kbd style */
+kbd {
+  font-family: var(--fonts-monospace);
+  color: var(--statusline3) !important;
+  background: var(--bg2);
+  border-radius: 4px;
+  padding: 0.2em 0.45em;
+  margin-right: 0.1em;
+  white-space: nowrap;
+
+  .dark & {
+    background: var(--bg0);
+  }
+
+  @include btn-3d;
+}

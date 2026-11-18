@@ -1,0 +1,23 @@
+@use "sass:map";
+
+@mixin apply-colors($bg, $fg, $contrast) {
+  @each $key, $value in map.get($bg, $contrast) {
+    --#{$key}: #{$value};
+  }
+
+  @each $key, $value in $fg {
+    --#{$key}: #{$value};
+  }
+}
+
+@mixin btn-3d {
+  box-shadow:
+    inset 0px 0px 0px 1px rgb(0 0 0 / 5%),
+    inset 0px -3px 0px 0px rgb(0 0 0 / 15%) !important;
+
+  .dark & {
+    box-shadow:
+      inset 0px 0px 0px 1px rgb(0 0 0 / 5%),
+      inset 0px -3px 0px 0px rgb(0 0 0 / 25%) !important;
+  }
+}
