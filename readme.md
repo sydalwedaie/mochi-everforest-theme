@@ -48,7 +48,7 @@ The theme is built with SCSS and offers a few customization options:
 3. **Compile**: Generate the CSS file
 
 ```bash
-sass --watch everforest-primary.scss everforest-primary.css
+sass --watch src/everforest-primary.scss everforest-primary.css
 ```
 
 ## Customization Options
@@ -74,6 +74,28 @@ Available colors: `red`, `orange`, `yellow`, `green`, `aqua`, `blue`, `purple`
 - `custom-ol-bullet` adds rounded custom bullet numbers and indentation lines.
 - `custom-highlights` adds 4 different highlight options by mixing markdown's `==`, `_` and `**` syntax.
 - `custom-bg-pattern` adds a subtle background dot battern to the main content area.
+
+## File Structure
+
+The main entry point is `everforest-primary.scss`. It imports all the components from the `src/components` directory, which eventually compiles into the output `everforest-primary.css` in the root directory.
+
+```
+├── everforest-primary.css                 # Compiled output (ready to use)
+└── src
+    ├── assets
+    │   ├── _colors.scss                   # Everforest colors (all variants)
+    │   ├── _settings.scss                 # Custom settings options
+    │   └── _tools.scss                    # SASS mixins
+    ├── components
+    │   ├── _base.scss                     # Base styles for the whole app
+    │   ├── _fixes.scss                    # Minor UI fixes
+    │   ├── _layout.scss                   # Opinionated layout fixes
+    │   ├── _syntax-highlighting.scss      # Everforest syntax highlighting
+    │   ├── _typography.scss               # Cards typography styles
+    │   └── _variables.scss                # Global variables (light, dark, common)
+    └── everforest-primary.scss            # Main entry point
+
+```
 
 ## References
 
