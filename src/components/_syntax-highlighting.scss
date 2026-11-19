@@ -4,11 +4,13 @@
 .hljs {
   color: var(--fg) !important;
   background: var(--bg-dim) !important;
-  padding: 0.3em !important /* fix disparity between light/dark modes */
+  /* fix disparity between light/dark modes */
+  padding: 0.3em !important
 }
 
 .hljs-comment,
 .hljs-quote {
+
   &,
   .dark & {
     color: var(--grey1);
@@ -19,6 +21,7 @@
 .hljs-keyword,
 .hljs-formula,
 .hljs-number {
+
   &,
   .dark & {
     color: var(--purple);
@@ -30,6 +33,7 @@
 .hljs-selector-tag,
 .hljs-deletion,
 .hljs-subst {
+
   &,
   .dark & {
     color: var(--red);
@@ -37,9 +41,10 @@
 }
 
 .hljs-literal {
+
   &,
   .dark & {
-    color: var(--aqua);
+    color: var(--green);
   }
 }
 
@@ -48,14 +53,16 @@
 .hljs-addition,
 .hljs-attribute,
 .hljs-meta-string {
+
   &,
   .dark & {
-    color: var(--green);
+    color: var(--aqua);
   }
 }
 
 .hljs-built_in,
 .hljs-class .hljs-title {
+
   &,
   .dark & {
     color: var(--yellow);
@@ -69,6 +76,7 @@
 .hljs-selector-class,
 .hljs-selector-attr,
 .hljs-selector-pseudo {
+
   &,
   .dark & {
     color: var(--orange);
@@ -81,6 +89,7 @@
 .hljs-meta,
 .hljs-selector-id,
 .hljs-title {
+
   &,
   .dark & {
     color: var(--blue);

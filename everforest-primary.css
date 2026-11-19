@@ -640,6 +640,7 @@ table {
 .hljs {
   color: var(--fg) !important;
   background: var(--bg-dim) !important;
+  /* fix disparity between light/dark modes */
   padding: 0.3em !important;
 }
 
@@ -672,7 +673,7 @@ table {
 }
 
 .hljs-literal, .dark .hljs-literal {
-  color: var(--aqua);
+  color: var(--green);
 }
 
 .hljs-string, .dark .hljs-string,
@@ -684,7 +685,7 @@ table {
 .dark .hljs-attribute,
 .hljs-meta-string,
 .dark .hljs-meta-string {
-  color: var(--green);
+  color: var(--aqua);
 }
 
 .hljs-built_in, .dark .hljs-built_in,
