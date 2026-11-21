@@ -1,0 +1,127 @@
+@use "../assets/settings" as *;
+@use "../assets/tools" as *;
+@use "sass:map";
+
+/* ---------------------------------------------*/
+/* ------------ Misc Custom Styles ------------ */
+/* ---------------------------------------------*/
+
+/* Make foot note jumps smooth */
+.memo_views_modal_modal-container {
+  scroll-behavior: smooth;
+}
+
+@if map.get($settings, custom-button-3d) {
+  /* 3D button effect */
+
+  .memo_views_atoms_button_default-button,
+  .memo_views_atoms_button_inverted-button {
+    @include btn-3d;
+  }
+}
+
+@if map.get($settings, custom-assets-shadow) {
+  /* Box shadow on card assets */
+
+  .memo_markdown_styles_markdown-class,
+  .memo_markdown_styles_markdown-column-class,
+  .memo_views_card_note-view_card-box-note-container {
+
+    p,
+    .paragraph {
+
+      &:has(img),
+      &:has(video),
+      &:has(.memo_markdown_components_inline-link) {
+        overflow: initial;
+      }
+    }
+
+    img,
+    video {
+      box-shadow: 0px 5px 17px 2px rgb(0 0 0 / 11%);
+      border-radius: 0.5rem;
+    }
+  }
+}
+
+@if map.get($settings, custom-ol-bullet) {
+  /* Custom numbered bullets */
+
+  ol>li,
+  ul>li {
+    position: relative;
+  }
+
+  ol>li {
+    list-style-type: none;
+  }
+
+  ol>li::before {
+    --bullet-size: 1.3rem;
+    content: counter(list-item);
+    position: absolute;
+    top: 0.1rem;
+    inset-inline-start: -1.7rem;
+    width: var(--bullet-size);
+    height: var(--bullet-size);
+    line-height: var(--bullet-size);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--fg);
+    background-color: var(--bg2);
+    border-radius: 99rem;
+    box-shadow: inset 0 0 0 1px var(--bg4);
+    font-family: "Cascadia Code" !important;
+
+    .dark & {
+      background-color: var(--bg3);
+      border-radius: 99rem;
+      box-shadow: inset 0 0 0 1px var(--bg5);
+    }
+  }
+
+  /* Indent lines */
+  ol>li::after,
+  ul>li::after {
+    content: "";
+    position: absolute;
+    top: 2rem;
+    bottom: 5px;
+    inset-inline-start: -1.1rem;
+    width: 1px;
+    background-color: var(--bg4);
+  }
+
+  ul>li::after {
+    inset-inline-start: -0.75rem;
+  }
+}
+
+@if map.get($settings, custom-bg-pattern) {
+
+  /* Background dots pattern */
+  .memo_views_frame_frame-container {
+    background-size: 50px 50px;
+    background-image: radial-gradient(circle,
+        hsla(37, 38%, 83%, 1) 1px,
+        rgba(0, 0, 0, 0) 1px);
+
+    .dark & {
+      background-color: var(--bg0);
+      background-image: radial-gradient(circle,
+          hsla(31, 27%, 25%, 1) 1px,
+          rgba(0, 0, 0, 0) 1px);
+    }
+  }
+
+  /* Add bg to the top bar of main content to hide the dot pattern */
+  .memo_views_pages_deck_breadcrumbs-container {
+    background-color: var(--bg1);
+
+    .dark & {
+      background-color: var(--bg0);
+    }
+  }
+}

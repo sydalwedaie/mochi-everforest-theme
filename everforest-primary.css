@@ -194,119 +194,6 @@ tbody tr:nth-child(even) {
   background-color: var(--bg1);
 }
 
-/* ------------ Custom Styles ------------ */
-/* Make foot note jumps smooth */
-.memo_views_modal_modal-container {
-  scroll-behavior: smooth;
-}
-
-/* 3D button effect */
-.memo_views_atoms_button_default-button,
-.memo_views_atoms_button_inverted-button {
-  box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.05), inset 0px -3px 0px 0px rgba(0, 0, 0, 0.15) !important;
-}
-.dark .memo_views_atoms_button_default-button,
-.dark .memo_views_atoms_button_inverted-button {
-  box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.05), inset 0px -3px 0px 0px rgba(0, 0, 0, 0.25) !important;
-}
-
-/* Box shadow on card assets */
-.memo_markdown_styles_markdown-class p:has(img), .memo_markdown_styles_markdown-class p:has(video), .memo_markdown_styles_markdown-class p:has(.memo_markdown_components_inline-link),
-.memo_markdown_styles_markdown-class .paragraph:has(img),
-.memo_markdown_styles_markdown-class .paragraph:has(video),
-.memo_markdown_styles_markdown-class .paragraph:has(.memo_markdown_components_inline-link),
-.memo_markdown_styles_markdown-column-class p:has(img),
-.memo_markdown_styles_markdown-column-class p:has(video),
-.memo_markdown_styles_markdown-column-class p:has(.memo_markdown_components_inline-link),
-.memo_markdown_styles_markdown-column-class .paragraph:has(img),
-.memo_markdown_styles_markdown-column-class .paragraph:has(video),
-.memo_markdown_styles_markdown-column-class .paragraph:has(.memo_markdown_components_inline-link),
-.memo_views_card_note-view_card-box-note-container p:has(img),
-.memo_views_card_note-view_card-box-note-container p:has(video),
-.memo_views_card_note-view_card-box-note-container p:has(.memo_markdown_components_inline-link),
-.memo_views_card_note-view_card-box-note-container .paragraph:has(img),
-.memo_views_card_note-view_card-box-note-container .paragraph:has(video),
-.memo_views_card_note-view_card-box-note-container .paragraph:has(.memo_markdown_components_inline-link) {
-  overflow: initial;
-}
-.memo_markdown_styles_markdown-class img,
-.memo_markdown_styles_markdown-class video,
-.memo_markdown_styles_markdown-column-class img,
-.memo_markdown_styles_markdown-column-class video,
-.memo_views_card_note-view_card-box-note-container img,
-.memo_views_card_note-view_card-box-note-container video {
-  box-shadow: 0px 5px 17px 2px rgba(0, 0, 0, 0.11);
-  border-radius: 0.5rem;
-}
-
-/* Custom numbered bullets */
-ol > li,
-ul > li {
-  position: relative;
-}
-
-ol > li {
-  list-style-type: none;
-}
-
-ol > li::before {
-  --bullet-size: 1.3rem;
-  content: counter(list-item);
-  position: absolute;
-  top: 0.1rem;
-  inset-inline-start: -1.7rem;
-  width: var(--bullet-size);
-  height: var(--bullet-size);
-  line-height: var(--bullet-size);
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-align: center;
-  color: var(--fg);
-  background-color: var(--bg2);
-  border-radius: 99rem;
-  box-shadow: inset 0 0 0 1px var(--bg4);
-  font-family: "Cascadia Code" !important;
-}
-.dark ol > li::before {
-  background-color: var(--bg3);
-  border-radius: 99rem;
-  box-shadow: inset 0 0 0 1px var(--bg5);
-}
-
-/* Indent lines */
-ol > li::after,
-ul > li::after {
-  content: "";
-  position: absolute;
-  top: 2rem;
-  bottom: 5px;
-  inset-inline-start: -1.1rem;
-  width: 1px;
-  background-color: var(--bg4);
-}
-
-ul > li::after {
-  inset-inline-start: -0.75rem;
-}
-
-/* Background dots pattern */
-.memo_views_frame_frame-container {
-  background-size: 50px 50px;
-  background-image: radial-gradient(circle, hsl(37, 38%, 83%) 1px, rgba(0, 0, 0, 0) 1px);
-}
-.dark .memo_views_frame_frame-container {
-  background-color: var(--bg0);
-  background-image: radial-gradient(circle, hsl(31, 27%, 25%) 1px, rgba(0, 0, 0, 0) 1px);
-}
-
-/* Add bg to the top bar of main content to hide the dot pattern */
-.memo_views_pages_deck_breadcrumbs-container {
-  background-color: var(--bg1);
-}
-.dark .memo_views_pages_deck_breadcrumbs-container {
-  background-color: var(--bg0);
-}
-
 /* -------------------------------------------- */
 /* --------------- Typography ----------------- */
 /* -------------------------------------------- */
@@ -368,6 +255,7 @@ html body {
   font-family: "Avenir Next Condensed";
   line-height: 1.1;
   text-wrap: balance;
+  margin-bottom: 0;
 }
 .memo_markdown_styles_markdown-class,
 .memo_markdown_styles_markdown-column-class,
@@ -613,6 +501,121 @@ kbd {
 }
 .memo_views_card_note-view_cards-list-container .memo_views_card_note-view_side-class {
   padding: 2em 3em 2.5em !important;
+}
+
+/* ---------------------------------------------*/
+/* ------------ Misc Custom Styles ------------ */
+/* ---------------------------------------------*/
+/* Make foot note jumps smooth */
+.memo_views_modal_modal-container {
+  scroll-behavior: smooth;
+}
+
+/* 3D button effect */
+.memo_views_atoms_button_default-button,
+.memo_views_atoms_button_inverted-button {
+  box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.05), inset 0px -3px 0px 0px rgba(0, 0, 0, 0.15) !important;
+}
+.dark .memo_views_atoms_button_default-button,
+.dark .memo_views_atoms_button_inverted-button {
+  box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.05), inset 0px -3px 0px 0px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Box shadow on card assets */
+.memo_markdown_styles_markdown-class p:has(img), .memo_markdown_styles_markdown-class p:has(video), .memo_markdown_styles_markdown-class p:has(.memo_markdown_components_inline-link),
+.memo_markdown_styles_markdown-class .paragraph:has(img),
+.memo_markdown_styles_markdown-class .paragraph:has(video),
+.memo_markdown_styles_markdown-class .paragraph:has(.memo_markdown_components_inline-link),
+.memo_markdown_styles_markdown-column-class p:has(img),
+.memo_markdown_styles_markdown-column-class p:has(video),
+.memo_markdown_styles_markdown-column-class p:has(.memo_markdown_components_inline-link),
+.memo_markdown_styles_markdown-column-class .paragraph:has(img),
+.memo_markdown_styles_markdown-column-class .paragraph:has(video),
+.memo_markdown_styles_markdown-column-class .paragraph:has(.memo_markdown_components_inline-link),
+.memo_views_card_note-view_card-box-note-container p:has(img),
+.memo_views_card_note-view_card-box-note-container p:has(video),
+.memo_views_card_note-view_card-box-note-container p:has(.memo_markdown_components_inline-link),
+.memo_views_card_note-view_card-box-note-container .paragraph:has(img),
+.memo_views_card_note-view_card-box-note-container .paragraph:has(video),
+.memo_views_card_note-view_card-box-note-container .paragraph:has(.memo_markdown_components_inline-link) {
+  overflow: initial;
+}
+.memo_markdown_styles_markdown-class img,
+.memo_markdown_styles_markdown-class video,
+.memo_markdown_styles_markdown-column-class img,
+.memo_markdown_styles_markdown-column-class video,
+.memo_views_card_note-view_card-box-note-container img,
+.memo_views_card_note-view_card-box-note-container video {
+  box-shadow: 0px 5px 17px 2px rgba(0, 0, 0, 0.11);
+  border-radius: 0.5rem;
+}
+
+/* Custom numbered bullets */
+ol > li,
+ul > li {
+  position: relative;
+}
+
+ol > li {
+  list-style-type: none;
+}
+
+ol > li::before {
+  --bullet-size: 1.3rem;
+  content: counter(list-item);
+  position: absolute;
+  top: 0.1rem;
+  inset-inline-start: -1.7rem;
+  width: var(--bullet-size);
+  height: var(--bullet-size);
+  line-height: var(--bullet-size);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--fg);
+  background-color: var(--bg2);
+  border-radius: 99rem;
+  box-shadow: inset 0 0 0 1px var(--bg4);
+  font-family: "Cascadia Code" !important;
+}
+.dark ol > li::before {
+  background-color: var(--bg3);
+  border-radius: 99rem;
+  box-shadow: inset 0 0 0 1px var(--bg5);
+}
+
+/* Indent lines */
+ol > li::after,
+ul > li::after {
+  content: "";
+  position: absolute;
+  top: 2rem;
+  bottom: 5px;
+  inset-inline-start: -1.1rem;
+  width: 1px;
+  background-color: var(--bg4);
+}
+
+ul > li::after {
+  inset-inline-start: -0.75rem;
+}
+
+/* Background dots pattern */
+.memo_views_frame_frame-container {
+  background-size: 50px 50px;
+  background-image: radial-gradient(circle, hsl(37, 38%, 83%) 1px, rgba(0, 0, 0, 0) 1px);
+}
+.dark .memo_views_frame_frame-container {
+  background-color: var(--bg0);
+  background-image: radial-gradient(circle, hsl(31, 27%, 25%) 1px, rgba(0, 0, 0, 0) 1px);
+}
+
+/* Add bg to the top bar of main content to hide the dot pattern */
+.memo_views_pages_deck_breadcrumbs-container {
+  background-color: var(--bg1);
+}
+.dark .memo_views_pages_deck_breadcrumbs-container {
+  background-color: var(--bg0);
 }
 
 /* -------------------------------------------- */

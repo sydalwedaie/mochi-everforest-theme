@@ -52,6 +52,8 @@ html body {
     font-family: map.get($settings, font-heading);
     line-height: 1.1;
     text-wrap: balance;
+    // Reset h5 and h6 default bottom margin
+    margin-bottom: 0;
   }
 
   /* Font size */

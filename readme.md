@@ -24,20 +24,38 @@ A beautiful, customizable [Everforest](https://github.com/sainnhe/everforest) co
 
 ## Installation
 
-Copy the compiled CSS file to your Mochi custom CSS location:
+Copy the compiled CSS file (`everforest-primary.css` in the root directory) to your Mochi custom CSS location:
 
 - Navigate to Mochi's settings
 - Find the Custom CSS theme option
 - Import `everforest-primary.css`
 
-> Note: You need to redo the above steps every time you update the theme file!
+> ![IMPORTANT]
+> You need to redo the above steps every time you update the theme file!
 
-Once installed, the theme automatically adapts to your Mochi dark/light mode setting:
+Once installed, the theme automatically adapts to your Mochi dark/light mode setting. No additional configuration is needed for basic usage. If you want to customize the theme, use the SCSS source files (see Customization section below)
 
-- **Dark Mode**: Activates when Mochi is set to dark theme
-- **Light Mode**: Activates when Mochi is set to light theme
+## File Structure
 
-No additional configuration is needed for basic usage. If you want to customize the theme, use the SCSS source files (see Customization section below)
+The main entry point is `everforest-primary.scss`. It imports all the components from the `src/components` directory, which eventually compiles into the output `everforest-primary.css` in the root directory.
+
+```
+├── everforest-primary.css                 # Compiled output (ready to use)
+└── src
+    ├── assets
+    │   ├── _colors.scss                   # Everforest colors (all variants)
+    │   ├── _settings.scss                 # Custom settings options
+    │   └── _tools.scss                    # SASS mixins
+    ├── components
+    │   ├── _base.scss                     # Base styles for the whole app
+    │   ├── _fixes.scss                    # Minor UI fixes
+    │   ├── _layout.scss                   # Opinionated layout fixes
+    │   ├── _syntax-highlighting.scss      # Everforest syntax highlighting
+    │   ├── _typography.scss               # Cards typography styles
+    │   └── _variables.scss                # Global variables (light, dark, common)
+    └── everforest-primary.scss            # Main entry point
+
+```
 
 ## Customize Using SCSS
 
@@ -75,27 +93,39 @@ Available colors: `red`, `orange`, `yellow`, `green`, `aqua`, `blue`, `purple`
 - `custom-highlights` adds 4 different highlight options by mixing markdown's `==`, `_` and `**` syntax.
 - `custom-bg-pattern` adds a subtle background dot battern to the main content area.
 
-## File Structure
+## Deeper Customization
 
-The main entry point is `everforest-primary.scss`. It imports all the components from the `src/components` directory, which eventually compiles into the output `everforest-primary.css` in the root directory.
+What you can customize in `_settings.scss` is limited to what I thought was sensible. But you are welcome to modify the `.scss` source files directly. You might want to note the following:
 
-```
-├── everforest-primary.css                 # Compiled output (ready to use)
-└── src
-    ├── assets
-    │   ├── _colors.scss                   # Everforest colors (all variants)
-    │   ├── _settings.scss                 # Custom settings options
-    │   └── _tools.scss                    # SASS mixins
-    ├── components
-    │   ├── _base.scss                     # Base styles for the whole app
-    │   ├── _fixes.scss                    # Minor UI fixes
-    │   ├── _layout.scss                   # Opinionated layout fixes
-    │   ├── _syntax-highlighting.scss      # Everforest syntax highlighting
-    │   ├── _typography.scss               # Cards typography styles
-    │   └── _variables.scss                # Global variables (light, dark, common)
-    └── everforest-primary.scss            # Main entry point
+### `_variables.scss`
 
-```
+This is the most essential piece of the theme. It redefines a couple of Mochi-specific CSS custom properties for both light and dark variants. They are in the format `--mochi--*`. I tried using these as much as possible as opposed to redefining actual CSS rules. These variables alone go a long way in changing the theme.
+
+### `_base.scss`
+
+Many times I had to target elements directly, since I could not find a dedicated Mochi variable (there are hundreds of them and I might have missed what I needed). For example, the Mochi variable for changing the background of the main content area also sets the sidebar background color. That's what is happening in `_base.scss`
+
+Most of the styles here are about changing colors. However, there are some opinionated styles as well, such as setting slightly different font sizes and borders. This file along with `_variables.scss` sets the base styles to an Everforest look and feel. The rest of these files are completely optional.
+
+### `_typography`
+
+This files makes extensive, opinionated changes to all sort cards typography styles. Some margins and paddings have been altered, custom fonts are set for heading and body text, along with specific font sizes that in my opinionate better work with the custom fonts.
+
+### `_layout.scss`
+
+This file contains opinionated layout changes to the Grid, Column, and Notebook views. For example, I increased the width of cards in the Grid view, and made some aesthetic changes to the Column view.
+
+### `_misc.scss`
+
+This file contains opinionated aesthetic improvements to some of the components. For example, shadows around card assets, a 3D effect on some of the UI buttons, and custom bullet styles.
+
+### `_fixes`
+
+This files includes very specific fixes to some parts of the UI.
+
+### `_syntax-highlighting.scss`
+
+Mochi ships with built-in stntax highlighting in code block. This file simply applies the Everforest color scheme.
 
 ## References
 
