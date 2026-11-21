@@ -14,7 +14,7 @@ A beautiful, customizable [Everforest](https://github.com/sainnhe/everforest) co
 - Seamless dark and light theme variants in one file.
 - Three contrast levels (hard, medium, soft) for both dark and light modes (default medium dark, hard light).
 - Optional colorful heading styles (H1-H6).
-- Optional custome numbered bullets and indent lines.
+- Optional custom numbered bullets and indent lines.
 - Custom font family and styles for standard and extended markdown syntax.
 - Custom inline code blocks.
 - Custom keyboard input (`<kbd>`) styling.
@@ -30,7 +30,7 @@ Copy the compiled CSS file (`everforest-primary.css` in the root directory) to y
 - Find the Custom CSS theme option
 - Import `everforest-primary.css`
 
-> ![IMPORTANT]
+> [!IMPORTANT]
 > You need to redo the above steps every time you update the theme file!
 
 Once installed, the theme automatically adapts to your Mochi dark/light mode setting. No additional configuration is needed for basic usage. If you want to customize the theme, use the SCSS source files (see Customization section below)
@@ -88,10 +88,10 @@ Available colors: `red`, `orange`, `yellow`, `green`, `aqua`, `blue`, `purple`
 ### Custom Components
 
 - `custom-button-3d` adds a 3D effect on some UI buttons.
-- `custom-assets-shadow` adds a subtle shadow arround images and videos, making them pop.
+- `custom-assets-shadow` adds a subtle shadow around images and videos, making them pop.
 - `custom-ol-bullet` adds rounded custom bullet numbers and indentation lines.
-- `custom-highlights` adds 4 different highlight options by mixing markdown's `==`, `_` and `**` syntax.
-- `custom-bg-pattern` adds a subtle background dot battern to the main content area.
+- `custom-highlights` adds 4 different highlight options by mixing Markdown's `==`, `_` and `**` syntax.
+- `custom-bg-pattern` adds a subtle background dot pattern to the main content area.
 
 ## Deeper Customization
 
@@ -105,15 +105,18 @@ This is the most essential piece of the theme. It redefines a couple of Mochi-sp
 
 Many times I had to target elements directly, since I could not find a dedicated Mochi variable (there are hundreds of them and I might have missed what I needed). For example, the Mochi variable for changing the background of the main content area also sets the sidebar background color. That's what is happening in `_base.scss`
 
-Most of the styles here are about changing colors. However, there are some opinionated styles as well, such as setting slightly different font sizes and borders. This file along with `_variables.scss` sets the base styles to an Everforest look and feel. The rest of these files are completely optional.
+Most of the styles here are about changing colors. However, there are some opinionated styles as well, such as setting slightly different font sizes and borders.
+
+> [!NOTE]
+> This file (`_base.scss`) along with `_variables.scss` sets the base styles to an Everforest look and feel. The following files are completely optional. You can safely remove them from `everforest-primary.scss` to completely exclude their styles.
 
 ### `_typography`
 
-This files makes extensive, opinionated changes to all sort cards typography styles. Some margins and paddings have been altered, custom fonts are set for heading and body text, along with specific font sizes that in my opinionate better work with the custom fonts.
+This file makes extensive, opinionated changes to all sorts of card typography styles. Some margins and paddings have been altered, and custom fonts are set for heading and body text, along with specific font sizes that in my opinionate better work with the custom fonts.
 
 ### `_layout.scss`
 
-This file contains opinionated layout changes to the Grid, Column, and Notebook views. For example, I increased the width of cards in the Grid view, and made some aesthetic changes to the Column view.
+This file contains opinionated layout changes to the Grid, Column, and Notebook views. For example, I increased the width of cards in the Grid view and made some aesthetic changes to the Column view.
 
 ### `_misc.scss`
 
@@ -121,11 +124,11 @@ This file contains opinionated aesthetic improvements to some of the components.
 
 ### `_fixes`
 
-This files includes very specific fixes to some parts of the UI.
+This file includes very specific fixes to some parts of the UI.
 
 ### `_syntax-highlighting.scss`
 
-Mochi ships with built-in stntax highlighting in code block. This file simply applies the Everforest color scheme.
+Mochi ships with built-in syntax highlighting in code blocks. This file simply applies the Everforest color scheme.
 
 ## References
 
